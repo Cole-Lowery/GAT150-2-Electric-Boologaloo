@@ -1,6 +1,7 @@
 #include "SpaceGame.h"
 #include "Player.h"
 #include "Enemy.h"
+#include "memory.h"
 #include "../GameData.h"
 
 bool SpaceGame::Initialize()
@@ -39,7 +40,6 @@ void SpaceGame::Update(float dt)
         m_scene->RemoveAllActors();
 
         // create player
-        //std::shared_ptr<viper::Model> model = std::make_shared<viper::Model>(GameData::shipPoints, viper::vec3{ 0.0f, 0.4f, 1.0f });
         viper::Transform transform{ viper::vec2{ viper::GetEngine().GetRenderer().GetWidth() * 0.5f, viper::GetEngine().GetRenderer().GetHeight() * 0.5f }, 0, 0.5f };
         auto player = std::make_unique<Player>(transform);
         player->speed = 1500.0f;
@@ -48,9 +48,10 @@ void SpaceGame::Update(float dt)
         player->tag = "player";
 
         //components
-        auto spriteRenderer = std::make_unique<viper::SpriteRenderer>();
-        spriteRenderer->textureName = "textures/player.png";
-        player->AddComponent(std::move(spriteRenderer));
+        auto meshRenderer = std::make_unique<viper::MeshRenderer>();
+        meshRenderer->meshName = "meshes/enemy.txt";
+        enemy->AddComponent(std::move(meshRenderer));
+
 
 		auto rb = std::make_unique<viper::RigidBody>();
 		rb->damping = 1.5f;

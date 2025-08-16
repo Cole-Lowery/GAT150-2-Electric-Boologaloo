@@ -7,6 +7,7 @@
 #include "Components/SpriteRenderer.h"
 #include "Components/RigidBody.h"
 #include "Components/CircleCollider2D.h"
+#include "Components/MeshRenderer.h"
 
 //audio
 #include "Audio/AudioSystem.h"

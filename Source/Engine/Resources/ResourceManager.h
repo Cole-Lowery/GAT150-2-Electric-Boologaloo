@@ -10,6 +10,10 @@
 namespace viper {
 	class ResourceManager : public Singleton<ResourceManager> {
 	public:
+		void Clear() {
+			m_resources.clear();
+		}
+
 		template<typename T, typename ... Args>
 		res_t<T> Get(const std::string& name, Args&& ... args);
 
@@ -17,7 +21,7 @@ namespace viper {
 		res_t<T> GetWithID(const std::string& id, const std::string& name, Args&& ... args);
 
 	private:
-		friend class Singleton<ResourceManager>; 
+		friend class Singleton<ResourceManager>;
 		ResourceManager() = default;
 
 	private:

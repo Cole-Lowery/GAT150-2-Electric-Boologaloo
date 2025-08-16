@@ -29,9 +29,9 @@ namespace viper
 
 		for (auto& component : m_components) {
 			if (component->active) {
-				auto rendererCompomet = dynamic_cast<RendererComponent*>(component.get());
-				if (rendererCompomet) {
-					rendererCompomet->Draw(renderer);
+				auto rendererComponent = dynamic_cast<RendererComponent*>(component.get());
+				if (rendererComponent) {
+					rendererComponent->Draw(renderer);
 				}
 			}
 		}

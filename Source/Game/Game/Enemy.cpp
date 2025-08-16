@@ -27,7 +27,7 @@ void Enemy::Update(float dt)
 	if (fireTimer <= 0) {
 		fireTimer = fireTime;
 
-		//std::shared_ptr<viper::Model> model = std::make_shared<viper::Model>(GameData::shipPoints, viper::vec3{ 0.0f, 1.0f, 1.0f });
+		//std::shared_ptr<viper::Mesh> Mesh = std::make_shared<viper::Mesh>(GameData::shipPoints, viper::vec3{ 0.0f, 1.0f, 1.0f });
 
 		viper::Transform m_transform{ this->m_transform.position, this->m_transform.rotation, 0.5f };
 		auto rocket = std::make_unique<Rocket>(m_transform);

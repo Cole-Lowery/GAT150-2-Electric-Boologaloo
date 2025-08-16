@@ -3,6 +3,8 @@
 #include "Component.h"
 #include "Math/Transform.h"
 #include "Renderer/Texture.h"
+#include "Renderer/Mesh.h"
+#include "Scene.h"
 
 #include <string>
 #include <memory>

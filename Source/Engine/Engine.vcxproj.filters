@@ -50,9 +50,6 @@
     <ClCompile Include="Audio\AudioSystem.cpp">
       <Filter>Source\Audio</Filter>
     </ClCompile>
-    <ClCompile Include="Renderer\Model.cpp">
-      <Filter>Source\Renderer</Filter>
-    </ClCompile>
     <ClCompile Include="Framework\Actor.cpp">
       <Filter>Source\Framework</Filter>
     </ClCompile>
@@ -91,6 +88,12 @@
     </ClCompile>
     <ClCompile Include="Components\RigidBody.cpp">
       <Filter>Source\Components</Filter>
+    </ClCompile>
+    <ClCompile Include="Core\Json.cpp">
+      <Filter>Source\Core</Filter>
+    </ClCompile>
+    <ClCompile Include="Renderer\Mesh.cpp">
+      <Filter>Source\Renderer</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -195,6 +198,9 @@
     </ClInclude>
     <ClInclude Include="Audio\AudioClip.h">
       <Filter>Source\Audio</Filter>
+    </ClInclude>
+    <ClInclude Include="Core\Json.h">
+      <Filter>Source\Core</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
