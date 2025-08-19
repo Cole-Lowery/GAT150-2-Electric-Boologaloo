@@ -3,10 +3,17 @@
 #include "Enemy.h"
 #include "memory.h"
 #include "../GameData.h"
+#include <Resources/ResourceManager.h>
+#include <Engine.h>
+#include <Components/MeshRenderer.h>
+#include <Components/RigidBody.h>
+#include <Components/CircleCollider2D.h>
+#include <Core/Random.h>
+#include <Components/SpriteRenderer.h>
 
-bool SpaceGame::Initialize()
-{
-    m_scene = std::make_unique<viper::Scene>(this);
+
+bool SpaceGame::Initialize(){
+   m_scene = std::make_unique<viper::Scene>(this);
 
 	m_titleText = std::make_unique<viper::Text>(viper::Resources().GetWithID<viper::Font>("title_font", "fonts/Prisma.ttf", 128.0f));
 	m_scoreText = std::make_unique<viper::Text>(viper::Resources().GetWithID<viper::Font>("ui_font", "fonts/Prisma.ttf", 48.0f));
@@ -50,6 +57,7 @@ void SpaceGame::Update(float dt)
         //components
         auto meshRenderer = std::make_unique<viper::MeshRenderer>();
         meshRenderer->meshName = "meshes/enemy.txt";
+        auto enemy = std::make_unique<Enemy>(viper::Transform{});
         enemy->AddComponent(std::move(meshRenderer));
 
 

@@ -1,5 +1,5 @@
-#include "Audio/AudioClip.h"
 #include "AudioSource.h"
+#include "Audio/AudioClip.h"
 #include "Engine.h"
 
 namespace viper {
@@ -10,6 +10,9 @@ namespace viper {
 		auto audioClip = Resources().Get<AudioClip>(audioClipName, GetEngine().GetAudio());
 		if (audioClip) {
 			GetEngine().GetAudio().PlaySound(*audioClip);
+		}
+		else {
+			Logger::Error("AudioSource: Failed to find audio clip with name: {}", audioClipName);
 		}
 	}
 }

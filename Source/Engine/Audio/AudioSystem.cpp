@@ -34,7 +34,7 @@ namespace viper {
     }
 
     void AudioSystem::Update() {
-        CheckFMODResult(m_system->update());
+       CheckFMODResult(m_system->update());
     }
 
     bool AudioSystem::AddSound(const char* filename, const std::string& name)

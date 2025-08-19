@@ -1,51 +1,48 @@
-
 #include "Game/SpaceGame.h"
 
+class Animal {
+public:
+    virtual void Spreak() = 0;
+};
+
+class Cat : public Animal {
+public:
+    void Spreak() override { std::cout << "Meow!\n"; }
+};
+
+class Dog : public Animal {
+public:
+    void Spreak() override { std::cout << "Woof!\n"; }
+};
+
+class Bird : public Animal {
+public:
+    void Spreak() override { std::cout << "Cherp!\n"; }
+};
+
+Animal* CreateAnimal(int id) {
+    Animal* animal = nullptr;
+    switch (id) {
+    case 1:
+        animal = new Cat;  break;
+    case 2:
+        animal = new Dog;  break;
+    case 3:
+        animal = new Bird; break;
+    }
+    return animal;
+};
 
 int main(int argc, char* argv[]) {
 
     viper::file::SetCurrentDirectory("Assets");
+    viper::Logger::Info("current directory: {}", viper::file::GetCurrentDirectory());
 
-    // load the json data from a file
-    std::string buffer;
-    viper::file::ReadTextFile("json.txt", buffer);
-    // show the contents of the json file (debug)
-    std::cout << buffer << std::endl;
+    auto spriteRenderer = viper::Factory::Instance().Create("SpriteRenderer");
+    spriteRenderer->name = "Steve";
 
-    // create json document from the json file contents
-    rapidjson::Document document;
-    viper::json::Load("json.txt", document);
 
-    // read the age data from the json
-    int age;
-    viper::json::Read(document, "age", age);
-    // show the age data
-    std::cout << age << std::endl;
-
-    // read/show the data from the json file
-    std::string name;
-    float speed;
-    bool isAwake;
-    viper::vec2 position;
-    viper::vec3 color;
-
-    // read the json data
-    JSON_READ(document, name);
-    JSON_READ(document, age);
-    JSON_READ(document, speed);
-    JSON_READ(document, isAwake);
-    JSON_READ(document, position);
-    JSON_READ(document, color);
-
-    // show the data
-    std::cout << name << " " << age << " " << speed << " " << isAwake << std::endl;
-    std::cout << position.x << " " << position.y << std::endl;
-    std::cout << color.r << " " << color.g << " " << color.b << " " << std::endl;
-
-    //initialize engine
-    viper::GetEngine().Initialize();
-
-    viper::Logger::Info("Initialize engine...");
+    return 0;
 
     //Initialize Game
     std::unique_ptr<SpaceGame> game = std::make_unique<SpaceGame>();
@@ -55,7 +52,7 @@ int main(int argc, char* argv[]) {
 
 
     viper::Font* font = new viper::Font();
-    font->Load("Archeologicaps.ttf", 20);
+    font->Load("Prisma.ttf", 20);
 
     FMOD::Sound* sound = nullptr;
 
