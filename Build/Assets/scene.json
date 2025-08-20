@@ -1,0 +1,12 @@
+{
+  "actors": [
+    {
+      "name": "Sprite",
+      "transform": {
+        "position": [400,300],
+        "scale": 30,
+        "rotation": 0
+      }
+    }
+  ]
+}

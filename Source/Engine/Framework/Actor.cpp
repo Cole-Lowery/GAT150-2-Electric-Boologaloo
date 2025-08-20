@@ -4,6 +4,9 @@
 
 namespace viper
 {
+	FACTORY_REGISTER(Actor)
+
+
 	void Actor::Update(float dt)
 	{
 		if (destroyed) return;

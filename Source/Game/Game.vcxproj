@@ -210,7 +210,10 @@
     <ClInclude Include="Rocket.h" />
   </ItemGroup>
   <ItemGroup>
-    <Text Include="..\..\Build\Assets\Meshes\enemy.txt" />
+    <Text Include="..\..\Build\Assets\Meshes\enemy.msh" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="..\..\Build\Assets\scene.json" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
