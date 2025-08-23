@@ -1,6 +1,7 @@
 #pragma once
 #include "Math.h"
 #include <cassert>
+#include <iostream>
 
 namespace viper
 {
@@ -52,42 +53,46 @@ namespace viper
 	};
 
 	template<typename T>
-	std::ostream& operator<<(std::ostream& stream, const Vector3<T>& v) {
-		stream << "{" << v.x << ", " << v.y << ", " << v.z << "}";
-		return stream;
+	std::ostream& operator<<(std::ostream& os, const Vector3<T>& v)
+	{
+		os << "Vector3(" << v.x << ", " << v.y << ", " << v.z << ")";
+		return os;
 	}
+
 	template<typename T>
-	std::istream& operator>>(std::istream& stream, Vector3<T>& v) {
-		char discard;
-		if (!(stream >> std::ws >> discard || discard != '{')) {
-			stream.setstate(std::ios::failbit);
-			return stream;
+	std::istream& operator>>(std::istream& os, Vector3<T>& v)
+	{
+		char ch = '\0';
+		// { x, y, z }
+		if (!(os >> std::ws >> ch) || ch != '{') {
+			os.setstate(std::ios::failbit);
+			return os;
 		}
-		if (!(stream >> std::ws >> v.x)) {	
-			stream.setstate(std::ios::failbit);
-			return stream;
+		if (!(os >> std::ws >> v.x)) {
+			os.setstate(std::ios::failbit);
+			return os;
 		}
-		if (!(stream >> std::ws >> discard) || discard != ',') {
-			stream.setstate(std::ios::failbit);
-			return stream;
+		if (!(os >> std::ws >> ch) || ch != ',') {
+			os.setstate(std::ios::failbit);
+			return os;
 		}
-		if (!(stream >> std::ws >> v.y)) {
-			stream.setstate(std::ios::failbit);
-			return stream;
+		if (!(os >> std::ws >> v.y)) {
+			os.setstate(std::ios::failbit);
+			return os;
 		}
-		if (!(stream >> std::ws >> discard) || discard != ',') {
-			stream.setstate(std::ios::failbit);
-			return stream;
+		if (!(os >> std::ws >> ch) || ch != ',') {
+			os.setstate(std::ios::failbit);
+			return os;
 		}
-		if (!(stream >> std::ws >> v.z)) {
-			stream.setstate(std::ios::failbit);
-			return stream;
+		if (!(os >> std::ws >> v.z)) {
+			os.setstate(std::ios::failbit);
+			return os;
 		}
-		if (!(stream >> std::ws >> discard) || discard != '}') {
-			stream.setstate(std::ios::failbit);
-			return stream;
+		if (!(os >> std::ws >> ch) || ch != '}') {
+			os.setstate(std::ios::failbit);
+			return os;
 		}
-		return stream;
+		return os;
 	}
 
 	using ivec3 = Vector3<int>;

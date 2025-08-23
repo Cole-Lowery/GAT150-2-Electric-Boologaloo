@@ -18,9 +18,9 @@ Register##classname register_instance;
 
 namespace viper {
 	class CreatorBase {
-	public:
-		virtual ~CreatorBase() = default;
-		virtual std::unique_ptr<Object> Create() = 0;
+		public:
+			virtual ~CreatorBase() = default;
+			virtual std::unique_ptr<Object> Create() = 0;
 	};
 
 	template<typename T>
@@ -35,11 +35,11 @@ namespace viper {
 	class Factory : public Singleton<Factory> {
 	public:
 		template<typename T>
-			requires std::derived_from<T, Object>
+		requires std::derived_from<T, Object>
 		void Register(const std::string& name);
 
 		template<typename T = Object>
-			requires std::derived_from<T, Object>
+		requires std::derived_from<T, Object>
 		std::unique_ptr<T> Create(const std::string& name);
 
 	private:
@@ -47,21 +47,28 @@ namespace viper {
 	};
 
 	template<typename T>
-		requires std::derived_from<T, Object>
+	requires std::derived_from<T, Object>
 	inline void Factory::Register(const std::string& name) {
 		std::string key = tolower(name);
 		m_registry[key] = std::make_unique<Creator<T>>();
 	}
 
 	template<typename T>
-		requires std::derived_from<T, Object>
+	requires std::derived_from<T, Object>
 	inline std::unique_ptr<T> Factory::Create(const std::string& name) {
 		std::string key = tolower(name);
 		auto it = m_registry.find(key);
 		if (it != m_registry.end()) {
-			it->second->Create();
+			auto object = it ->second->Create();
+			T* derived = dynamic_cast<T*>(object.get());
+			if (derived) {
+				return std::unique_ptr<T>(derived);
+			}
+			Logger::Error("Factory: Created object of type '{}' but expected type '{}'", name, typeid(T).name());
 		}
-		Logger::Error("Factory: No creator registered for type '{}'", name);
+		else {
+			Logger::Error("Factory: No creator registered for type '{}'", name);
+		}
 
 		return nullptr;
 	}

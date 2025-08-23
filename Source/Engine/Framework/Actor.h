@@ -3,8 +3,6 @@
 #include "Component.h"
 #include "Math/Transform.h"
 #include "Renderer/Texture.h"
-#include "Renderer/Mesh.h"
-#include "Scene.h"
 
 #include <string>
 #include <memory>
@@ -27,10 +25,12 @@ namespace viper {
 			m_transform{ transform }
 		{}
 
+		void Read(const json::value_t& value) override;
+
 		virtual void Update(float dt);
 		virtual void Draw(class Renderer& renderer);
 
-		virtual void OnCollision(Actor* other) = 0;
+		virtual void OnCollision(Actor* other) {}
 
 		void AddComponent(std::unique_ptr<Component> component);
 

@@ -3,7 +3,7 @@
 namespace viper {
     FACTORY_REGISTER(CircleCollider2D)
 
-        void CircleCollider2D::Update(float dt) {
+    void CircleCollider2D::Update(float dt) {
         //
     }
 
@@ -19,4 +19,11 @@ namespace viper {
         return false;
     }
 
+    void CircleCollider2D::Read(const json::value_t& value) {
+        Object::Read(value);
+
+        JSON_READ(value, radius);
+    }
+
 }
+

@@ -28,10 +28,10 @@
     <ClCompile Include="GameData.cpp">
       <Filter>Source\Game</Filter>
     </ClCompile>
-    <ClCompile Include="Rocket.cpp">
+    <ClCompile Include="GamePCH.cpp">
       <Filter>Source\Game</Filter>
     </ClCompile>
-    <ClCompile Include="GamePCH.cpp">
+    <ClCompile Include="Game\Rocket.cpp">
       <Filter>Source\Game</Filter>
     </ClCompile>
   </ItemGroup>

@@ -1,10 +1,9 @@
 #include "EnginePCH.h"
 
 namespace viper {
-		void Transform::Read(const json::value_t& value)
-		{
-			json::Read(value, "position", position);
-			json::Read(value, "rotation", rotation);
-			json::Read(value, "scale", scale);
-		}
+	void Transform::Read(const json::value_t& value) {
+		JSON_READ(value, position);
+		JSON_READ(value, rotation);
+		JSON_READ(value, scale);
+	}
 }

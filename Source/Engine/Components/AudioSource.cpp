@@ -3,6 +3,7 @@
 #include "Engine.h"
 
 namespace viper {
+	FACTORY_REGISTER(AudioSource)
 	void AudioSource::Update(float dt) {
 		//
 	}
@@ -10,8 +11,7 @@ namespace viper {
 		auto audioClip = Resources().Get<AudioClip>(audioClipName, GetEngine().GetAudio());
 		if (audioClip) {
 			GetEngine().GetAudio().PlaySound(*audioClip);
-		}
-		else {
+		} else {
 			Logger::Error("AudioSource: Failed to find audio clip with name: {}", audioClipName);
 		}
 	}

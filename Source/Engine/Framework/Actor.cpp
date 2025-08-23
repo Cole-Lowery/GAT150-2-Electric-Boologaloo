@@ -2,11 +2,8 @@
 #include "Renderer/Renderer.h"
 #include "Components/RendererComponent.h"
 
-namespace viper
-{
+namespace viper {
 	FACTORY_REGISTER(Actor)
-
-
 	void Actor::Update(float dt)
 	{
 		if (destroyed) return;
@@ -32,9 +29,9 @@ namespace viper
 
 		for (auto& component : m_components) {
 			if (component->active) {
-				auto rendererComponent = dynamic_cast<RendererComponent*>(component.get());
-				if (rendererComponent) {
-					rendererComponent->Draw(renderer);
+				auto rendererCompomet = dynamic_cast<RendererComponent*>(component.get());
+				if (rendererCompomet) {
+					rendererCompomet->Draw(renderer);
 				}
 			}
 		}
@@ -44,6 +41,27 @@ namespace viper
 	{
 		component->owner = this;
 		m_components.push_back(std::move(component));
+	}
+
+	void Actor::Read(const json::value_t& value) {
+		Object::Read(value);
+		JSON_READ(value, tag);
+		JSON_READ(value, lifespan);
+		if (JSON_HAS(value, m_transform)) m_transform.Read(JSON_GET(value, m_transform));
+
+		// Read Components
+		if (JSON_HAS(value, m_components)) {
+			for (auto& componentValue : JSON_GET(value, m_components).GetArray()) {
+
+				std::string type;
+				JSON_READ(componentValue, type);
+
+				auto component = Factory::Instance().Create<Component>(type);
+				component->Read(componentValue);
+
+				AddComponent(std::move(component));
+			}
+		}
 	}
 
 }

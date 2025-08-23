@@ -50,6 +50,9 @@
     <ClCompile Include="Audio\AudioSystem.cpp">
       <Filter>Source\Audio</Filter>
     </ClCompile>
+    <ClCompile Include="Renderer\Mesh.cpp">
+      <Filter>Source\Renderer</Filter>
+    </ClCompile>
     <ClCompile Include="Framework\Actor.cpp">
       <Filter>Source\Framework</Filter>
     </ClCompile>
@@ -92,8 +95,8 @@
     <ClCompile Include="Core\Json.cpp">
       <Filter>Source\Core</Filter>
     </ClCompile>
-    <ClCompile Include="Renderer\Mesh.cpp">
-      <Filter>Source\Renderer</Filter>
+    <ClCompile Include="Components\MeshRenderer.h">
+      <Filter>Source\Components</Filter>
     </ClCompile>
     <ClCompile Include="Components\MeshRenderer.cpp">
       <Filter>Source\Components</Filter>
@@ -103,6 +106,9 @@
     </ClCompile>
     <ClCompile Include="Math\Transform.cpp">
       <Filter>Source\Math</Filter>
+    </ClCompile>
+    <ClCompile Include="Framework\Object.cpp">
+      <Filter>Source\Framework</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -210,9 +216,6 @@
     </ClInclude>
     <ClInclude Include="Core\Json.h">
       <Filter>Source\Core</Filter>
-    </ClInclude>
-    <ClInclude Include="Components\MeshRenderer.h">
-      <Filter>Source\Components</Filter>
     </ClInclude>
     <ClInclude Include="Core\Factory.h">
       <Filter>Source\Core</Filter>

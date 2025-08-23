@@ -1,19 +1,14 @@
 #pragma once
-#include "Framework/Actor.h"
+#include "Framework/Component.h"
 
-class Rocket : public viper::Actor {
+class Rocket : public viper::Component {
 public:
-	float speed = 20.0f;
+	float speed = 200.0f;
 
 public:
 	Rocket() = default;
-	Rocket(const viper::Transform transform) :
-		Actor{ transform } {
-	}
 
 	void Update(float dt) override;
 
-	void OnCollision(Actor* other) override;
-private:
-
+	void OnCollision(class viper::Actor* other);
 };

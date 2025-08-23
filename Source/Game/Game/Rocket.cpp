@@ -1,46 +1,27 @@
 #include "Rocket.h"
-#include "Engine.h"
-#include "Renderer/Renderer.h"
-#include "Framework/Scene.h"
-#include "Core/Random.h"
-#include "Renderer/ParticleSystem.h"
-#include "../GamePCH.h"
 
-void Rocket::Update(float dt) {
+// Registers the Rocket class with the factory system.
+FACTORY_REGISTER(Rocket);
 
-    transform.position.x = viper::math::wrap(transform.position.x, 0.0f, (float)viper::GetEngine().GetRenderer().GetWidth());
-    transform.position.y = viper::math::wrap(transform.position.y, 0.0f, (float)viper::GetEngine().GetRenderer().GetHeight());
+void Rocket::Update(float dt)
+{
+	/*
+	viper::vec2 force = viper::vec2{ 1,0 }.Rotate(viper::math::degToRad(m_transform.rotation)) * speed;
+	auto* rb = GetComponent<viper::RigidBody>();
+	if (rb) {
+		rb->velocity = force * dt;
+	}
 
-    float angle = transform.rotation + viper::random::getReal(-60.0f, 60.0f);
-    //velocity = viper::vec2{ 1, 0 }.Rotate(viper::math::degToRad(angle)) * speed;
-    //  viper::vec2{ viper::random::getReal(-200.0f , 200.0f), viper::random::getReal(-200.0f , 200.0f) };
-    viper::vec2 force = viper::vec2{ 1,0 }.Rotate(viper::math::degToRad(transform.rotation)) * speed;
-    auto* rb = GetComponent<viper::RigidBody>();
-    if (rb) {
-        rb->velocity = force;
-    }
-<<<<<<< Updated upstream
-   
-=======
+	m_transform.position.x = viper::math::wrap(m_transform.position.x, 0.0f, (float)viper::GetEngine().GetRenderer().GetWidth());
+	m_transform.position.y = viper::math::wrap(m_transform.position.y, 0.0f, (float)viper::GetEngine().GetRenderer().GetHeight());
 
->>>>>>> Stashed changes
-
-    viper::Particle particle;
-    particle.position = transform.position;
-    particle.velocity = viper::vec2{ 1, 0 }.Rotate(viper::math::degToRad(angle)) * speed;
-    particle.color = (tag == "enemy") ? viper::vec3{ 0, 1, 1 } : viper::vec3{ 1, 1, 0 };
-    particle.lifespan = viper::random::getReal(0.15f, 0.3f);
-    viper::GetEngine().GetPS().AddParticle(particle);
-
-    Actor::Update(dt);
+	Actor::Update(dt);
+	*/
 }
 
-void Rocket::OnCollision(Actor* other) {
-    if (tag != other->tag) {
-        destroyed = true;
-    }
-<<<<<<< Updated upstream
+void Rocket::OnCollision(viper::Actor* other)
+{
+	if (owner->tag != other->tag) {
+		owner->destroyed = true;
+	}
 }
-=======
-}
->>>>>>> Stashed changes

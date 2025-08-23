@@ -1,6 +1,6 @@
 #pragma once
-#include "../Math/Vector2.h"
-#include "../Core/Serializable.h"
+#include "Vector2.h"
+#include "Core/Serializable.h"
 
 namespace viper
 {
@@ -10,13 +10,13 @@ namespace viper
 		float rotation = 0;
 		float scale = 1;
 
-		void Read(const viper::Json::value_t& value);
-
 		Transform() = default;
 		Transform(const vec2& position, float rotation = 0, float scale = 1) :
 			position{ position },
 			rotation{ rotation },
 			scale{ scale } 
 		{ }
+
+		void Read(const json::value_t& value) override;
 	};
 }

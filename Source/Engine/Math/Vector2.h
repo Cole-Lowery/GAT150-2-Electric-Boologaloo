@@ -64,7 +64,8 @@ namespace viper
 		/// </summary>
 		/// <param name="radians">The angle to rotate the vector, in radians.</param>
 		/// <returns>A new Vector2 representing the rotated vector.</returns>
-		Vector2 Rotate(float radians) const{
+		Vector2 Rotate(float radians) const
+		{
 			Vector2 v;
 			v.x = x * math::cosf(radians) - y * math::sinf(radians);
 			v.y = x * math::sinf(radians) + y * math::cosf(radians);
@@ -72,35 +73,40 @@ namespace viper
 			return v;
 		}
 	};
+
 	template<typename T>
-	std::ostream& operator<<(std::ostream& stream, const Vector2<T>& v){
-		stream << "{" << v.x << ", " << v.y << "}";
-		return stream;
+	std::ostream& operator<<(std::ostream& os, const Vector2<T>& v)
+	{
+		os << "Vector2(" << v.x << ", " << v.y << ")";
+		return os;
 	}
+
 	template<typename T>
-	std::istream& operator>>(std::istream& stream, Vector2<T>& v) {
-		char discard;
-		if (!(stream >> std::ws >> discard || discard != '{')) {
-			stream.setstate(std::ios::failbit);
-			return stream;
+	std::istream& operator>>(std::istream& os, Vector2<T>& v)
+	{
+		char ch = '\0';
+		// { x, y }
+		if (!(os >> std::ws >> ch) || ch != '{') {
+			os.setstate(std::ios::failbit);
+			return os;
 		}
-		if (!(stream >> std::ws >> v.x)) {
-			stream.setstate(std::ios::failbit);
-			return stream;
+		if (!(os >> std::ws >> v.x)) {
+			os.setstate(std::ios::failbit);
+			return os;
 		}
-		if (!(stream >> std::ws >> discard) || discard != ',') {
-			stream.setstate(std::ios::failbit);
-			return stream;
+		if (!(os >> std::ws >> ch) || ch != ',') {
+			os.setstate(std::ios::failbit);
+			return os;
 		}
-		if (!(stream >> std::ws >> v.y)) {
-			stream.setstate(std::ios::failbit);
-			return stream;
+		if (!(os >> std::ws >> v.y)) {
+			os.setstate(std::ios::failbit);
+			return os;
 		}
-		if (!(stream >> std::ws >> discard) || discard != '}') {
-			stream.setstate(std::ios::failbit);
-			return stream;
+		if (!(os >> std::ws >> ch) || ch != '}') {
+			os.setstate(std::ios::failbit);
+			return os;
 		}
-		return stream;
+		return os;
 	}
 
 	using ivec2 = Vector2<int>;
