@@ -1,10 +1,14 @@
 #include "../GamePCH.h"
 #include "Player.h"
 #include "SpaceGame.h"
-#include "Rocket.h"
+#include "../Rocket.h"
 #include "../GameData.h"
 
-//FACTORY_REGISTER(Player)
+FACTORY_REGISTER(Player)
+
+void Player::Start() {
+	m_rigidbody = owner->GetComponent<viper::RigidBody>();
+}
 
 void Player::Update(float dt)
 {

@@ -1,7 +1,6 @@
 #include "Rocket.h"
 
-// Registers the Rocket class with the factory system.
-FACTORY_REGISTER(Rocket);
+FACTORY_REGISTER(Rocket)
 
 void Rocket::Update(float dt)
 {
@@ -24,4 +23,8 @@ void Rocket::OnCollision(viper::Actor* other)
 	if (owner->tag != other->tag) {
 		owner->destroyed = true;
 	}
+}
+
+void Rocket::Read(const viper::json::value_t& value) {
+
 }

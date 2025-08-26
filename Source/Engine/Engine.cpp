@@ -19,12 +19,13 @@ namespace viper {
 
 		m_particleSystem = std::make_unique<viper::ParticleSystem>();
 		m_particleSystem->Initialize(5000);
-
+		 
 		return true;
 	}
 
 	void Engine::Shutdown() {
 		Resources().Clear();
+		//Events().RemoveAll();
 		m_particleSystem->Shutdown();
 		m_audio->Shutdown();
 		m_input->Shutdown();
