@@ -101,8 +101,8 @@
     <Link>
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalLibraryDirectories>$(SolutionDir)Source\ThirdParty\SDL3\lib\$(PlatformTarget);$(SolutionDir)Source\ThirdParty\fmod\core\lib\$(PlatformTarget);%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
-      <AdditionalDependencies>sdl3.lib;sdl3_ttf.lib;fmod_vc.lib;sdl3_image.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>$(SolutionDir)Source\ThirdParty\SDL3\lib\$(PlatformTarget);$(SolutionDir)Source\ThirdParty\fmod\core\lib\$(PlatformTarget);$(SolutionDir)Source\ThirdParty\box2d\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>sdl3.lib;sdl3_ttf.lib;fmod_vc.lib;sdl3_image.lib;box2dd.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
     <PostBuildEvent>
       <Command>xcopy /y /i "$(TargetDir)" "$(SolutionDir)Build"</Command>
@@ -125,8 +125,8 @@
     <Link>
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalLibraryDirectories>$(SolutionDir)Source\ThirdParty\SDL3\lib\$(PlatformTarget);$(SolutionDir)Source\ThirdParty\fmod\core\lib\$(PlatformTarget);%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
-      <AdditionalDependencies>sdl3.lib;sdl3_ttf.lib;fmod_vc.lib;sdl3_image.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>$(SolutionDir)Source\ThirdParty\SDL3\lib\$(PlatformTarget);$(SolutionDir)Source\ThirdParty\fmod\core\lib\$(PlatformTarget);$(SolutionDir)Source\ThirdParty\box2d\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>sdl3.lib;sdl3_ttf.lib;fmod_vc.lib;sdl3_image.lib;box2dd.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
     <PostBuildEvent>
       <Command>xcopy /y /i "$(TargetDir)" "$(SolutionDir)Build"</Command>
@@ -147,8 +147,8 @@
     <Link>
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalLibraryDirectories>$(SolutionDir)Source\ThirdParty\SDL3\lib\$(PlatformTarget);$(SolutionDir)Source\ThirdParty\fmod\core\lib\$(PlatformTarget);%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
-      <AdditionalDependencies>sdl3.lib;sdl3_ttf.lib;fmod_vc.lib;sdl3_image.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>$(SolutionDir)Source\ThirdParty\SDL3\lib\$(PlatformTarget);$(SolutionDir)Source\ThirdParty\fmod\core\lib\$(PlatformTarget);$(SolutionDir)Source\ThirdParty\box2d\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>sdl3.lib;sdl3_ttf.lib;fmod_vc.lib;sdl3_image.lib;box2dd.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
     <PostBuildEvent>
       <Command>xcopy /y /i "$(TargetDir)" "$(SolutionDir)Build"</Command>
@@ -171,8 +171,8 @@
     <Link>
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalLibraryDirectories>$(SolutionDir)Source\ThirdParty\SDL3\lib\$(PlatformTarget);$(SolutionDir)Source\ThirdParty\fmod\core\lib\$(PlatformTarget);%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
-      <AdditionalDependencies>sdl3.lib;sdl3_ttf.lib;fmod_vc.lib;sdl3_image.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>$(SolutionDir)Source\ThirdParty\SDL3\lib\$(PlatformTarget);$(SolutionDir)Source\ThirdParty\fmod\core\lib\$(PlatformTarget);$(SolutionDir)Source\ThirdParty\box2d\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>sdl3.lib;sdl3_ttf.lib;fmod_vc.lib;sdl3_image.lib;box2dd.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
     <PostBuildEvent>
       <Command>xcopy /y /i "$(TargetDir)" "$(SolutionDir)Build"</Command>
