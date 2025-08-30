@@ -40,7 +40,7 @@ namespace viper {
 	inline T* Scene::GetactorByName(const std::string& name)
 	{
 		for (auto& actor : m_actors) {
-			if (tolower(actor->name) == tolower(name)) {
+			if (toLower(actor->name) == toLower(name)) {
 				T* object = dynamic_cast<T*>(actor.get());
 				if (object) {
 					return object;
@@ -54,7 +54,7 @@ namespace viper {
 	inline std::vector<T*> Scene::GetActorsByTag(const std::string& tag) {
 		std::vector<T*> results;
 		for (auto& actor : m_actors) {
-			if (tolower(actor->tag) == tolower(tag)) {
+			if (toLower(actor->tag) == toLower(tag)) {
 				T* object = dynamic_cast<T*>(actor.get());
 				if (object) {
 					results.push_back(object);

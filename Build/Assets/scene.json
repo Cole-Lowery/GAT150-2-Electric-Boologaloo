@@ -9,26 +9,25 @@
           640,
           512
         ],
-        "rotation": 0,
+        "rotation": 30,
         "scale": 1
       },
       "components": [
         {
           "type": "Player",
           "speed": 1500.0,
-          "rotationRate": 600,
-          "fireTime": 0.2,
-          "
+          "rotationRate": 180,
+          "fireTime": 0.2
         },
         {
           "type": "SpriteRenderer",
-          "texture_name": "textures/playership.png"
+          "texture_name": "textures/player.png"
         },
         {
           "type": "RigidBody",
           "damping": 1.5,
           "velocity": [
-            0,
+            300,
             0
           ]
         },
@@ -44,35 +43,65 @@
       "lifespan": 4,
       "transform": {
         "position": [
-          840,
-          612
+          640,
+          512
         ],
-        "rotation": 0,
+        "rotation": 30,
         "scale": 1
       },
       "components": [
         {
           "type": "Enemy",
-          "speed": 1500.0,
-          "rotationRate": 600,
-          "fireTime": 0.2,
-          "
+          "speed": 500.0,
+          "speed": 200.0,
+          "rotationRate": 180,
+          "fireTime": 2.0
         },
         {
           "type": "SpriteRenderer",
-          "texture_name": "textures/playership.png"
+          "texture_name": "textures/enemy.png"
         },
         {
           "type": "RigidBody",
           "damping": 1.5,
           "velocity": [
-            0,
+            300,
             0
           ]
         },
         {
           "type": "CircleCollider2D",
           "radius": 60
+        }
+      ]
+    },
+    {
+      "name": "rocket",
+      "lifespan": 1.5,
+      "transform": {
+        "position": [
+          640,
+          512
+        ],
+        "scale": 1
+      },
+      "components": [
+        {
+          "type": "Rocket",
+          "speed": 500.0
+
+        },
+        {
+          "type": "SpriteRenderer",
+          "texture_name": "textures/rocket.png"
+        },
+        {
+          "type": "RigidBody",
+          "damping": 1.5
+        },
+        {
+          "type": "CircleCollider2D",
+          "radius": 10
         }
       ]
     }
@@ -85,11 +114,11 @@
       "lifespan": 4,
       "transform": {
         "position": [
-          640,
-          512
+          400,
+          300
         ],
-        "rotation": 0,
-        "scale": 1
+        "rotation": 30,
+        "scale": 2
       },
       "components": [
         {
@@ -98,5 +127,6 @@
         }
       ]
     }
+
   ]
 }

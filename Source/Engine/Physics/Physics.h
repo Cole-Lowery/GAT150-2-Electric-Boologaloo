@@ -1,4 +1,6 @@
-#include <box2d/box2d.h>
+#pragma once
+
+#include "../ThirdParty/box2d/include/box2d/box2d.h"
 #include <memory>
 
 namespace viper {

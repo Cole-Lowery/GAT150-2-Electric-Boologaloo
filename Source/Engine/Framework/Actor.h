@@ -24,12 +24,13 @@ namespace viper {
 		Actor() = default;
 		Actor(const Transform transform) :
 			m_transform{ transform }
-		{}
+		{
+		}
 		Actor(const Actor& other);
 
 		CLASS_PROTOTYPE(Actor)
 
-		void Read(const json::value_t& value) override;
+			void Read(const json::value_t& value) override;
 
 		virtual void Start();
 		virtual void Destroyed();
@@ -37,7 +38,7 @@ namespace viper {
 		virtual void Update(float dt);
 		virtual void Draw(class Renderer& renderer);
 
-		virtual void OnCollision(Actor* other) {}
+		virtual void OnCollision(Actor* other);
 
 		void AddComponent(std::unique_ptr<Component> component);
 
@@ -60,7 +61,7 @@ namespace viper {
 				return result;
 			}
 		}
-			return nullptr;
+		return nullptr;
 	}
 
 	template<typename T>

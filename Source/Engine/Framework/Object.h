@@ -15,7 +15,6 @@ namespace viper {
 
 		virtual std::unique_ptr<Object> Clone() = 0;
 
-		// Inherited via Serializable
 		void Read(const json::value_t& value) override;
 	};
 }

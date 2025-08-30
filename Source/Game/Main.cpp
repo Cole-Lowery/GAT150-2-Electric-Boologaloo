@@ -1,47 +1,74 @@
+
 #include "Game/SpaceGame.h"
 
+
+
 int main(int argc, char* argv[]) {
-    
 
-	viper::file::SetCurrentDirectory("Assets");
-	viper::Logger::Info("current directory: {}", viper::file::GetCurrentDirectory());
 
-	// Intialize engine
-	viper::Logger::Warning("Viper Engine is initializing...");
+
+    //return 0;
+
+    viper::file::SetCurrentDirectory("Assets");
+
+    //initialize engine
     viper::GetEngine().Initialize();
 
-	//Initialize game
-	std::unique_ptr<SpaceGame> game = std::make_unique<SpaceGame>();
-	game->Initialize();
+    viper::Logger::Info("Initialize engine...");
+
+    //Initialize Game
+    std::unique_ptr<SpaceGame> game = std::make_unique<SpaceGame>();
+    game->Initialize();
+
+    //create objects
+
+
+    viper::Font* font = new viper::Font();
+    font->Load("Prisma.ttf", 20);
+
+    FMOD::Sound* sound = nullptr;
+
+    std::vector<FMOD::Sound*> sounds;
+
+
 
     SDL_Event e;
     bool quit = false;
-   
+    float rotate = 0;
+
+
+    //Main Loop
     while (!quit) {
+
         while (SDL_PollEvent(&e)) {
             if (e.type == SDL_EVENT_QUIT) {
                 quit = true;
             }
         }
 
-        // Update input system
-		viper::GetEngine().Update();
+        viper::GetEngine().Update();
+
         game->Update(viper::GetEngine().GetTime().GetDeltaTime());
 
-        if (viper::GetEngine().GetInput().GetKeyPressed(SDL_SCANCODE_ESCAPE)) { quit = true; }
+        if (viper::GetEngine().GetInput().GetKeyPressed(SDL_SCANCODE_ESCAPE)) quit = true;
 
-		// Clear the renderer
-		viper::vec3 color{ 0, 0, 0};
+        //draw
+        viper::vec3 color{ 0, 0, 0 };
 
-        viper::GetEngine().GetRenderer().SetColor(color.r, color.g, color.b);
+        viper::GetEngine().GetRenderer().SetColor((float)color.r, (float)color.g, (float)color.b);
         viper::GetEngine().GetRenderer().Clear();
 
-		game->Draw(viper::GetEngine().GetRenderer());
-       
+        viper::GetEngine().Draw();
+
+        game->Draw(viper::GetEngine().GetRenderer());
+
+
+        //present
         viper::GetEngine().GetRenderer().Present();
+
     }
 
-	game->Shutdown();
+    game->Shutdown();
     game.release();
     viper::GetEngine().Shutdown();
 
