@@ -5,9 +5,10 @@
 
 //components
 #include "Components/SpriteRenderer.h"
+#include "Components/MeshRenderer.h"
 #include "Components/RigidBody.h"
 #include "Components/CircleCollider2D.h"
-#include "Components/MeshRenderer.h"
+#include "Components/Animator.h"
 
 //audio
 #include "Audio/AudioSystem.h"
@@ -23,3 +24,4 @@
 #include "Renderer/Renderer.h"
 #include "Renderer/Text.h"
 #include "Renderer/Texture.h"
+

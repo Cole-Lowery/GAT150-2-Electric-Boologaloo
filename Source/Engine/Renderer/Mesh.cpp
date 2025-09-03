@@ -1,67 +1,73 @@
 #include "Mesh.h"
 #include "Renderer.h"
+#include "../EnginePCH.h"
+#include "../Core/File.h"
 
-namespace viper
-{
+
+namespace viper {
 	bool Mesh::Load(const std::string& filename) {
 		std::string buffer;
 		if (!file::ReadTextFile(filename, buffer)) {
-			Logger::Error("Failed to load mesh file: {}", filename);
+			Logger::Error("Could not read file: {}", filename);
 			return false;
 		}
 
-		std::stringstream stream(buffer);
+		std::istringstream stream(buffer);
 
+		//read color
 		stream >> m_color;
 
 		vec2 point;
+
 		while (stream >> point) {
 			m_points.push_back(point);
 		}
 
-		if (stream.fail() && !stream.eof()) {
-			Logger::Error("Failed to parse mesh points from file: {}", filename);
+		if (!stream.eof()) {
+			Logger::Error("Could not parse file: {}", filename);
 			return false;
 		}
 
 		return true;
 	}
 
-	void Mesh::Draw(Renderer& renderer, const vec2& postion, float rotation, float scale)
-	{
-		if (m_points.empty()) return;
 
-		renderer.SetColor(m_color.r, m_color.g, m_color.b);
-		// iterate through the points and draw lines between them
-		for (int i = 0; i < m_points.size() - 1; ++i)
-		{
-			vec2 p1 = (m_points[i].Rotate(math::degToRad(rotation)) * scale) + postion;
-			vec2 p2 = (m_points[i + 1].Rotate(math::degToRad(rotation)) * scale) + postion;
+	/// <summary>
+/// Draws the model by rendering lines between its points using the specified renderer.
+/// </summary>
+/// <param name="renderer">The Renderer object used to draw the model.</param>
+void Mesh::Draw(Renderer& renderer, const vec2& position, float rotation, float scale) {
+	if (m_points.empty()) return;
 
-			renderer.DrawLine(p1.x, p1.y, p2.x, p2.y);
-		}
+	renderer.SetColor(m_color.r, m_color.g, m_color.b);
+
+	//iterate through all points, draw line
+	for (int i = 0; i < m_points.size() - 1; i++) {
+		vec2 p1 = (m_points[i].Rotate(math::degToRad(rotation)) * scale) + position;
+		vec2 p2 = (m_points[i + 1].Rotate(math::degToRad(rotation)) * scale) + position;
+
+		renderer.DrawLine(p1.x, p1.y, p2.x, p2.y);
 	}
+}
+/// <summary>
+/// Draws the model using the specified renderer and transformation.
+/// </summary>
+/// <param name="renderer">The renderer used to draw the model.</param>
+/// <param name="transform">The transformation to apply, including position, rotation, and scale.</param>
+void Mesh::Draw(Renderer& renderer, const Transform& transform) {
+	Draw(renderer, transform.position, transform.rotation, transform.scale);
+}
 
-	void Mesh::Draw(Renderer& renderer, const Transform& transform)
-	{
-		if (m_points.empty()) return;
+/// <summary>
+/// Calculates and sets the radius of the model as the maximum distance from the origin among its points.
+/// </summary>
+void Mesh::CalculateRadius() {
+	m_radius = 0;
+	for (auto& point : m_points) {
+		float length = point.Length();
+		if (length > m_radius) m_radius = length;
+	}
+}
 
-		renderer.SetColor(m_color.r, m_color.g, m_color.b);
-		for (int i = 0; i < m_points.size() - 1; ++i)
-		{
-			vec2 p1 = (m_points[i].Rotate(math::degToRad(transform.rotation)) * transform.scale) + transform.position;
-			vec2 p2 = (m_points[i + 1].Rotate(math::degToRad(transform.rotation)) * transform.scale) + transform.position;
-			renderer.DrawLine(p1.x, p1.y, p2.x, p2.y);
-		}
-	}
-	void Mesh::CalculateRadius()
-	{
-		m_radius = 0.0f;
-		for (const auto& point : m_points) {
-			float length = point.Length();
-			if (length > m_radius) {
-				m_radius = length;
-			}
-		}
-	}
+
 }

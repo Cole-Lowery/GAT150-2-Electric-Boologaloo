@@ -15,21 +15,18 @@
       "components": [
         {
           "type": "Player",
-          "speed": 1500.0,
-          "rotationRate": 180,
+          "speed": 50.0,
+          "rotationRate": 30,
           "fireTime": 0.2
         },
         {
           "type": "SpriteRenderer",
-          "texture_name": "textures/player.png"
+          "texture_name": "textures/blue_01.png"
         },
         {
           "type": "RigidBody",
-          "damping": 1.5,
-          "velocity": [
-            300,
-            0
-          ]
+          "gravityScale": 0,
+          "angularDamping": 2.0
         },
         {
           "type": "CircleCollider2D",
@@ -52,8 +49,7 @@
       "components": [
         {
           "type": "Enemy",
-          "speed": 500.0,
-          "speed": 200.0,
+          "speed": 0.0,
           "rotationRate": 180,
           "fireTime": 2.0
         },
@@ -63,11 +59,7 @@
         },
         {
           "type": "RigidBody",
-          "damping": 1.5,
-          "velocity": [
-            300,
-            0
-          ]
+          "gravityScale": 0
         },
         {
           "type": "CircleCollider2D",
@@ -97,7 +89,8 @@
         },
         {
           "type": "RigidBody",
-          "damping": 1.5
+          "gravityScale": 0,
+          "isSensor":  true
         },
         {
           "type": "CircleCollider2D",

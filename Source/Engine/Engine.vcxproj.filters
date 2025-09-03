@@ -18,26 +18,14 @@
     <Filter Include="Source\Renderer">
       <UniqueIdentifier>{6c179f99-32db-439d-bef6-bb7c33b7d689}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Input">
+      <UniqueIdentifier>{47fff5b0-5396-4471-92b4-8cc7cba2d74a}</UniqueIdentifier>
+    </Filter>
     <Filter Include="Source\Audio">
       <UniqueIdentifier>{bc4b0ed9-37f4-4069-a110-857150412ca5}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source\Framework">
       <UniqueIdentifier>{89eedae9-d66f-477d-b497-72cd2895939e}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source\Componenets">
-      <UniqueIdentifier>{fa34ec6c-d76f-4abd-915d-7428f97552f2}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source\Event">
-      <UniqueIdentifier>{b69105cd-eb39-4764-b03c-cc6a283beb88}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source\Input">
-      <UniqueIdentifier>{47fff5b0-5396-4471-92b4-8cc7cba2d74a}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source\Physics">
-      <UniqueIdentifier>{691ccc69-2604-4d11-95a6-4158e5587bb1}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source\Resources">
-      <UniqueIdentifier>{aeb2f1c3-9c2e-4a2c-a651-bf6d9327e14b}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -48,7 +36,10 @@
       <Filter>Source\Core</Filter>
     </ClCompile>
     <ClCompile Include="Input\InputSystems.cpp">
-      <Filter>Source\Input</Filter>
+      <Filter>Input</Filter>
+    </ClCompile>
+    <ClCompile Include="Audio\AudioSystem.cpp">
+      <Filter>Source\Audio</Filter>
     </ClCompile>
     <ClCompile Include="Core\StringHelper.cpp">
       <Filter>Source\Core</Filter>
@@ -77,53 +68,59 @@
     <ClCompile Include="Core\File.cpp">
       <Filter>Source\Core</Filter>
     </ClCompile>
+    <ClCompile Include="Renderer\ParticleSystem.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="Renderer\Texture.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
     <ClCompile Include="EnginePCH.cpp">
       <Filter>Source</Filter>
     </ClCompile>
-    <ClCompile Include="Audio\AudioClip.cpp">
-      <Filter>Source\Audio</Filter>
-    </ClCompile>
-    <ClCompile Include="Audio\AudioSystem.cpp">
-      <Filter>Source\Audio</Filter>
-    </ClCompile>
-    <ClCompile Include="Components\AudioSource.cpp">
-      <Filter>Source\Componenets</Filter>
-    </ClCompile>
-    <ClCompile Include="Components\CircleCollider2D.cpp">
-      <Filter>Source\Componenets</Filter>
+    <ClCompile Include="Components\SpriteRenderer.cpp">
+      <Filter>Source</Filter>
     </ClCompile>
     <ClCompile Include="Components\RigidBody.cpp">
-      <Filter>Source\Componenets</Filter>
+      <Filter>Source</Filter>
     </ClCompile>
-    <ClCompile Include="Components\SpriteRenderer.cpp">
-      <Filter>Source\Componenets</Filter>
+    <ClCompile Include="Components\CircleCollider2D.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="Audio\AudioClip.cpp">
+      <Filter>Source</Filter>
     </ClCompile>
     <ClCompile Include="Components\MeshRenderer.cpp">
-      <Filter>Source\Componenets</Filter>
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="Components\AudioSource.cpp">
+      <Filter>Source</Filter>
     </ClCompile>
     <ClCompile Include="Core\Json.cpp">
-      <Filter>Source\Core</Filter>
-    </ClCompile>
-    <ClCompile Include="Event\EventManager.cpp">
-      <Filter>Source\Event</Filter>
-    </ClCompile>
-    <ClCompile Include="Event\Observer.cpp">
-      <Filter>Source\Event</Filter>
-    </ClCompile>
-    <ClCompile Include="Framework\Object.cpp">
-      <Filter>Source\Framework</Filter>
+      <Filter>Source</Filter>
     </ClCompile>
     <ClCompile Include="Math\Transform.cpp">
-      <Filter>Source\Math</Filter>
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="Framework\Object.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="Event\EventManager.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="Event\Observer.cpp">
+      <Filter>Source</Filter>
     </ClCompile>
     <ClCompile Include="Physics\Physics.cpp">
-      <Filter>Source\Physics</Filter>
+      <Filter>Source</Filter>
     </ClCompile>
-    <ClCompile Include="Renderer\ParticleSystem.cpp">
-      <Filter>Source\Renderer</Filter>
+    <ClCompile Include="Physics\PhysicsBody.cpp">
+      <Filter>Source</Filter>
     </ClCompile>
-    <ClCompile Include="Renderer\Texture.cpp">
-      <Filter>Source\Renderer</Filter>
+    <ClCompile Include="Renderer\TextureAnimation.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="Components\Animator.cpp">
+      <Filter>Source</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -146,7 +143,10 @@
       <Filter>Source\Math</Filter>
     </ClInclude>
     <ClInclude Include="Input\InputSystem.h">
-      <Filter>Source\Input</Filter>
+      <Filter>Input</Filter>
+    </ClInclude>
+    <ClInclude Include="Audio\AudioSystem.h">
+      <Filter>Source\Audio</Filter>
     </ClInclude>
     <ClInclude Include="Math\Vector3.h">
       <Filter>Source\Math</Filter>
@@ -178,86 +178,95 @@
     <ClInclude Include="Renderer\Text.h">
       <Filter>Source\Renderer</Filter>
     </ClInclude>
+    <ClInclude Include="Renderer\ParticleSystem.h">
+      <Filter>Include</Filter>
+    </ClInclude>
+    <ClInclude Include="Renderer\Texture.h">
+      <Filter>Include</Filter>
+    </ClInclude>
+    <ClInclude Include="Resources\Resource.h">
+      <Filter>Include</Filter>
+    </ClInclude>
+    <ClInclude Include="Resources\ResourceManager.h">
+      <Filter>Include</Filter>
+    </ClInclude>
+    <ClInclude Include="Core\Singleton.h">
+      <Filter>Include</Filter>
+    </ClInclude>
+    <ClInclude Include="Core\Logger.h">
+      <Filter>Include</Filter>
+    </ClInclude>
     <ClInclude Include="EngineMinimal.h">
       <Filter>Include</Filter>
     </ClInclude>
     <ClInclude Include="EnginePCH.h">
       <Filter>Include</Filter>
     </ClInclude>
-    <ClInclude Include="Audio\AudioClip.h">
-      <Filter>Source\Audio</Filter>
-    </ClInclude>
-    <ClInclude Include="Audio\AudioSystem.h">
-      <Filter>Source\Audio</Filter>
-    </ClInclude>
-    <ClInclude Include="Resources\Resource.h">
-      <Filter>Source\Resources</Filter>
-    </ClInclude>
-    <ClInclude Include="Resources\ResourceManager.h">
-      <Filter>Source\Resources</Filter>
-    </ClInclude>
-    <ClInclude Include="Renderer\ParticleSystem.h">
-      <Filter>Source\Renderer</Filter>
-    </ClInclude>
-    <ClInclude Include="Physics\Physics.h">
-      <Filter>Source\Physics</Filter>
-    </ClInclude>
-    <ClInclude Include="Renderer\Texture.h">
-      <Filter>Source\Renderer</Filter>
-    </ClInclude>
-    <ClInclude Include="Physics\Collidable.h">
-      <Filter>Source\Physics</Filter>
+    <ClInclude Include="Framework\Object.h">
+      <Filter>Include</Filter>
     </ClInclude>
     <ClInclude Include="Framework\Component.h">
-      <Filter>Source\Framework</Filter>
-    </ClInclude>
-    <ClInclude Include="Event\Observer.h">
-      <Filter>Source\Event</Filter>
-    </ClInclude>
-    <ClInclude Include="Core\Json.h">
-      <Filter>Source\Core</Filter>
-    </ClInclude>
-    <ClInclude Include="Core\Factory.h">
-      <Filter>Source\Core</Filter>
-    </ClInclude>
-    <ClInclude Include="Components\ColliderComponent.h">
-      <Filter>Source\Componenets</Filter>
+      <Filter>Include</Filter>
     </ClInclude>
     <ClInclude Include="Components\RendererComponent.h">
-      <Filter>Source\Componenets</Filter>
-    </ClInclude>
-    <ClInclude Include="Components\RigidBody.h">
-      <Filter>Source\Componenets</Filter>
-    </ClInclude>
-    <ClInclude Include="Components\AudioSource.h">
-      <Filter>Source\Componenets</Filter>
-    </ClInclude>
-    <ClInclude Include="Components\CircleCollider2D.h">
-      <Filter>Source\Componenets</Filter>
-    </ClInclude>
-    <ClInclude Include="Components\MeshRenderer.h">
-      <Filter>Source\Componenets</Filter>
-    </ClInclude>
-    <ClInclude Include="Core\Logger.h">
-      <Filter>Source\Core</Filter>
-    </ClInclude>
-    <ClInclude Include="Core\Serializable.h">
-      <Filter>Source\Core</Filter>
-    </ClInclude>
-    <ClInclude Include="Core\Singleton.h">
-      <Filter>Source\Core</Filter>
-    </ClInclude>
-    <ClInclude Include="Event\EventManager.h">
-      <Filter>Source\Event</Filter>
-    </ClInclude>
-    <ClInclude Include="Framework\Object.h">
-      <Filter>Source\Framework</Filter>
-    </ClInclude>
-    <ClInclude Include="Event\Event.h">
-      <Filter>Source\Event</Filter>
+      <Filter>Include</Filter>
     </ClInclude>
     <ClInclude Include="Components\SpriteRenderer.h">
-      <Filter>Source\Componenets</Filter>
+      <Filter>Include</Filter>
+    </ClInclude>
+    <ClInclude Include="Components\RigidBody.h">
+      <Filter>Include</Filter>
+    </ClInclude>
+    <ClInclude Include="Components\ColliderComponent.h">
+      <Filter>Include</Filter>
+    </ClInclude>
+    <ClInclude Include="Components\CircleCollider2D.h">
+      <Filter>Include</Filter>
+    </ClInclude>
+    <ClInclude Include="Audio\AudioClip.h">
+      <Filter>Include</Filter>
+    </ClInclude>
+    <ClInclude Include="Components\MeshRenderer.h">
+      <Filter>Include</Filter>
+    </ClInclude>
+    <ClInclude Include="Components\AudioSource.h">
+      <Filter>Include</Filter>
+    </ClInclude>
+    <ClInclude Include="Core\Json.h">
+      <Filter>Include</Filter>
+    </ClInclude>
+    <ClInclude Include="Core\Factory.h">
+      <Filter>Include</Filter>
+    </ClInclude>
+    <ClInclude Include="Core\Serializable.h">
+      <Filter>Include</Filter>
+    </ClInclude>
+    <ClInclude Include="Physics\Collidable.h">
+      <Filter>Include</Filter>
+    </ClInclude>
+    <ClInclude Include="Physics\Physics.h">
+      <Filter>Include</Filter>
+    </ClInclude>
+    <ClInclude Include="Event\Observer.h">
+      <Filter>Include</Filter>
+    </ClInclude>
+    <ClInclude Include="Event\Event.h">
+      <Filter>Include</Filter>
+    </ClInclude>
+    <ClInclude Include="Event\EventManager.h">
+      <Filter>Include</Filter>
+    </ClInclude>
+    <ClInclude Include="Physics\PhysicsBody.h">
+      <Filter>Include</Filter>
+    </ClInclude>
+    <ClInclude Include="Math\Rect.h">
+      <Filter>Include</Filter>
+    </ClInclude>
+    <ClInclude Include="Renderer\TextureAnimation.h">
+      <Filter>Include</Filter>
+    </ClInclude>
+    <ClInclude Include="Components\Animator.h">
+      <Filter>Include</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

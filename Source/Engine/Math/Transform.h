@@ -2,10 +2,9 @@
 #include "Vector2.h"
 #include "Core/Serializable.h"
 
-namespace viper
-{
-	struct Transform : public ISerializable
-	{
+namespace viper {
+	struct Transform : public ISerializeable {
+	
 		vec2 position{ 0, 0 };
 		float rotation = 0;
 		float scale = 1;
@@ -14,9 +13,9 @@ namespace viper
 		Transform(const vec2& position, float rotation = 0, float scale = 1) :
 			position{ position },
 			rotation{ rotation },
-			scale{ scale } 
-		{ }
+			scale{ scale } {}
 
-		void Read(const json::value_t& value) override;
+		// Inherited via Serializeable
+		void Read(const json::value_t& value);
 	};
 }

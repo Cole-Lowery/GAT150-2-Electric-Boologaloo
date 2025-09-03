@@ -1,14 +1,15 @@
 #pragma once
 #include "Framework/Component.h"
 
-namespace viper {
+namespace viper{
 	class AudioSource : public Component {
 	public:
-		std::string audioClipName; 
+		std::string audioClipName;
 
 		CLASS_PROTOTYPE(AudioSource)
 
 		void Update(float dt) override;
 		void Play();
+
 	};
 }

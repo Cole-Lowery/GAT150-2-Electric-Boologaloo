@@ -1,6 +1,7 @@
 #pragma once
 
-namespace viper {
+namespace viper{
+
 	template<typename T>
 	class Singleton {
 	public:
@@ -12,7 +13,12 @@ namespace viper {
 			return instance;
 		}
 
+
 	protected:
 		Singleton() = default;
+
+
+	private:
+
 	};
 }

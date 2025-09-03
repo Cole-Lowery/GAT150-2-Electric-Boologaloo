@@ -2,8 +2,6 @@
 #include <string>
 #include <iostream>
 #include <format>
-#include <cstdint>
-#include <SDL3/SDL.h>
 
 namespace viper {
 
@@ -16,12 +14,16 @@ namespace viper {
 		All = Info | Warning | Error | Debug
 	};
 
+	// need to cast LogLevel a and b to uint8_t to perform | (or) operation, then cast back to LogLevel
 	inline LogLevel operator | (LogLevel a, LogLevel b) {
-		return static_cast<LogLevel>(static_cast<uint8_t>(a) | static_cast<uint8_t>(b));
+		return ( static_cast<LogLevel>(static_cast<uint8_t>(a)) | static_cast<LogLevel>(static_cast<uint8_t>(b)));
+		//return ( static_cast<LogLevel>(static_cast<uint8_t>(a)) | static_cast<uint8_t>(b));
 	}
 
-	inline LogLevel operator & (LogLevel a, LogLevel b) {
-		return static_cast<LogLevel>(static_cast<uint8_t>(a) & static_cast<uint8_t>(b));
+	// need to cast LogLevel a and b to uint8_t to perform & (and) operation, then cast back to LogLevel
+	inline LogLevel operator & (LogLevel a, LogLevel b) { 
+		return (static_cast<LogLevel>(static_cast<uint8_t>(a)), static_cast<LogLevel>(static_cast<uint8_t>(b)));
+		//return (static_cast<LogLevel>(static_cast<uint8_t>(a)) & static_cast<uint8_t>(b));
 	}
 
 	class Logger {
@@ -31,6 +33,7 @@ namespace viper {
 		}
 
 		static void Log(LogLevel level, const std::string& message) {
+
 			if ((s_enabledLevels & level) == LogLevel::None) return;
 
 			std::string prefix;
@@ -60,7 +63,7 @@ namespace viper {
 			}
 
 			const std::string reset = "\033[0m";
-			std::string output = color + prefix + message + reset;
+			std::string output = color + prefix + message + reset + "\n";
 
 			std::cerr << output;
 		}
@@ -78,15 +81,18 @@ namespace viper {
 		template<typename... Args>
 		static void Warning(std::format_string<Args...> fmt, Args&&... args) {
 			Log(LogLevel::Warning, std::format(fmt, std::forward<Args>(args)...));
+			//<call Log() with warning level and std::format with args>
 		}
 
 		template<typename... Args>
 		static void Debug(std::format_string<Args...> fmt, Args&&... args) {
 			Log(LogLevel::Debug, std::format(fmt, std::forward<Args>(args)...));
+			//<call Log() with debug level and std::format with args>
 		}
 
 	private:
 		inline static LogLevel s_enabledLevels = LogLevel::All;
 	};
+
 
 }

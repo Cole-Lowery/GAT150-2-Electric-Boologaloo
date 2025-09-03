@@ -11,7 +11,7 @@ namespace viper {
 			struct { T x, y; };
 			struct { T u, v; };
 		};
-
+		
 
 		Vector2() = default;
 		Vector2(T x, T y) : x{ x }, y{ y } {}
@@ -40,7 +40,7 @@ namespace viper {
 		Vector2& operator /= (float s) { x /= s; y /= s; return *this; }
 
 		// square root ((x * x) + ( y * y))
-
+		
 		float LengthSqr() const { return (x * x) + (y * y); }
 		float Length() const { return viper::math::sqrtf(LengthSqr()); }
 
@@ -48,7 +48,7 @@ namespace viper {
 		/// Returns a normalized (unit length) version of the vector.
 		/// </summary>
 		/// <returns>A Vector2 representing the direction of the original vector with a length of 1.</returns>
-		Vector2 Normalized() const { return *this / Length(); }
+		Vector2 Normalized() const { return *this / Length() ; }
 
 		float Angle() const { return math::atan2f(y, x); };
 
@@ -143,7 +143,7 @@ namespace viper {
 			stream.setstate(std::ios::failbit);
 			return stream;
 		}
-
+		
 		return stream;
 	}
 

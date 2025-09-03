@@ -1,36 +1,37 @@
 #pragma once
-#include "Object.h"
-#include "Component.h"
+#include "Framework/Object.h"
 #include "Math/Transform.h"
+#include "Renderer/Mesh.h"
+#include "Scene.h"
 #include "Renderer/Texture.h"
+#include "Component.h"
 
-#include <string>
-#include <memory>
 #include <vector>
+#include <memory>
+#include <string>
 
-namespace viper {
+namespace viper{
+	class Component;
 	class Actor : public Object {
 	public:
 		std::string tag;
 
 		bool destroyed{ false };
-		float lifespan{ 0.0f };
+		float lifespan{ 0 };
+
 		bool persistent{ false };
 
-		Transform m_transform;
-		class Scene* m_scene{ nullptr };
-
+		Transform transform;
+		class Scene* scene{ nullptr };
 	public:
 		Actor() = default;
-		Actor(const Transform transform) :
-			m_transform{ transform }
-		{
-		}
+		Actor( const Transform& transform) :
+			transform{ transform }
+			 {}
+
 		Actor(const Actor& other);
 
 		CLASS_PROTOTYPE(Actor)
-
-			void Read(const json::value_t& value) override;
 
 		virtual void Start();
 		virtual void Destroyed();
@@ -40,6 +41,8 @@ namespace viper {
 
 		virtual void OnCollision(Actor* other);
 
+
+		//components
 		void AddComponent(std::unique_ptr<Component> component);
 
 		template<typename T>
@@ -48,13 +51,18 @@ namespace viper {
 		template<typename T>
 		std::vector<T*> GetComponents();
 
+		void Read(const json::value_t& value);
 	protected:
 		std::vector<std::unique_ptr<Component>> m_components;
+		
+		
+
+		// Inherited via Serializeable
+
 	};
 
 	template<typename T>
-	inline T* Actor::GetComponent()
-	{
+	inline T* Actor::GetComponent() {
 		for (auto& component : m_components) {
 			auto result = dynamic_cast<T*>(component.get());
 			if (result) {
@@ -63,10 +71,8 @@ namespace viper {
 		}
 		return nullptr;
 	}
-
 	template<typename T>
-	inline std::vector<T*> Actor::GetComponents()
-	{
+	inline std::vector<T*> Actor::GetComponents() {
 		std::vector<T*> results;
 		for (auto& component : m_components) {
 			auto result = dynamic_cast<T*>(component.get());

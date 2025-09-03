@@ -7,11 +7,9 @@ namespace viper {
 		AudioClip() = default;
 		~AudioClip();
 
-		bool Load(const std::string& filename, class AudioSystem& renderer);
-
+		bool Load(const std::string& filename, class AudioSystem& audioSystem);
 	private:
 		friend class AudioSystem;
-
 		FMOD::Sound* m_sound{ nullptr };
 	};
 }

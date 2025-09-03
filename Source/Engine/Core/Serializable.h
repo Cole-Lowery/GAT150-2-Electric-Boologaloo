@@ -2,11 +2,10 @@
 #include "Json.h"
 
 namespace viper {
-	class ISerializable {
+	class ISerializeable {
 	public:
-		virtual ~ISerializable() = default;
-		
+		virtual ~ISerializeable() = default;
+
 		virtual void Read(const json::value_t& value) = 0;
 	};
-
 }

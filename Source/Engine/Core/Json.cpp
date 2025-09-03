@@ -84,7 +84,7 @@ namespace viper::json {
         data = value[name.c_str()].GetString();
 
         return true;
-
+        
     }
 
     bool Read(const value_t& value, const std::string& name, vec2& data, bool required) {

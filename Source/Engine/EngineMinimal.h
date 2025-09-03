@@ -7,7 +7,7 @@
 #include "Core/Random.h"
 #include "Core/Singleton.h"
 #include "Core/StringHelper.h"
-#include "Core/Time.h"
+#include "Time.h"
 #include "Core/Json.h"
 
 //framework
@@ -21,12 +21,14 @@
 #include "Math/Transform.h"
 #include "Math/Vector2.h"
 #include "Math/Vector3.h"
+#include "Math/Rect.h"
 
 //physics
 #include "Physics/Collidable.h"
 #include "Physics/Physics.h"
+#include "Physics/PhysicsBody.h"
 
-//resources
+//Resources
 #include "Resources/Resource.h"
 #include "Resources/ResourceManager.h"
 
@@ -35,23 +37,22 @@
 #include "Event/EventManager.h"
 #include "Event/Observer.h"
 
-//third-party libraries
-#include <fmod.hpp>
-#include <fmod_errors.h>
+// third-party libraries
 #include <SDL3/SDL.h>
+#include <fmod.hpp>
 #include <SDL3_image/SDL_image.h>
 #include <SDL3_ttf/SDL_ttf.h>
 
-//standerd library
+// standard library
 #include <string>
 #include <iostream>
 #include <fstream>
 #include <memory>
 #include <vector>
+#include <cmath>
 #include <map>
 #include <list>
 #include <cstdlib>
-#include <random>
 #include <algorithm>
-#include <cmath>
 #include <filesystem>
+#include <fmod_errors.h>

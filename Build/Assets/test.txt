@@ -1,4 +1,1 @@
-test test test 
-
-
-test
+This is the text from the test.txt

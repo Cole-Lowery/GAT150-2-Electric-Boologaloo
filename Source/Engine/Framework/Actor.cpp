@@ -9,7 +9,7 @@ namespace viper {
 		Object{ other },
 		tag{ other.tag },
 		lifespan{ other.lifespan },
-		m_transform{ other.m_transform }
+		transform{ other.transform }
 	{
 		//copy components
 		for (auto& component : other.m_components) {
@@ -24,7 +24,7 @@ namespace viper {
 			collidable->OnCollision(other);
 		}
 	}
-
+	
 
 	void Actor::Start() {
 		for (auto& component : m_components) {
@@ -39,66 +39,66 @@ namespace viper {
 	}
 
 	void viper::Actor::Update(float dt) {
-		if (destroyed) return;
+	if (destroyed) return;
 
-		if (lifespan > 0) {
-			lifespan -= dt;
-			if (lifespan <= 0) {
-				destroyed = true;
-				return;
+	if (lifespan > 0) {
+		lifespan -= dt;
+		if (lifespan <= 0) {
+			destroyed = true;
+			return;
+		}
+	}
+
+	//update all components
+	for (auto& component : m_components) {
+		if (component->active) component->Update(dt);
+	}
+}
+
+void viper::Actor::Draw(Renderer& renderer) {
+	if (destroyed) return;
+
+	for (auto& component : m_components) {
+		if (component->active) { 
+			auto rendererComponent = dynamic_cast<RendererComponent*>(component.get());
+			if (rendererComponent) {
+				rendererComponent->Draw(renderer);
 			}
-		}
-
-		//update all components
-		for (auto& component : m_components) {
-			if (component->active) component->Update(dt);
+			//rendererComponent->Draw(renderer);
 		}
 	}
 
-	void viper::Actor::Draw(Renderer& renderer) {
-		if (destroyed) return;
+	//renderer.DrawTexture(m_texture.get(), transform.position.x, transform.position.y, transform.rotation, transform.scale);
+	
+}
 
-		for (auto& component : m_components) {
-			if (component->active) {
-				auto rendererComponent = dynamic_cast<RendererComponent*>(component.get());
-				if (rendererComponent) {
-					rendererComponent->Draw(renderer);
-				}
-				//rendererComponent->Draw(renderer);
-			}
-		}
+void Actor::AddComponent(std::unique_ptr<Component> component) {
+	component->owner = this;
+	m_components.push_back(std::move(component));
+}
 
-		//renderer.DrawTexture(m_texture.get(), transform.position.x, transform.position.y, transform.rotation, transform.scale);
+void Actor::Read(const json::value_t& value) {
+	Object::Read(value);
 
-	}
+	JSON_READ(value, tag);
+	JSON_READ(value, lifespan);
+	JSON_READ(value, persistent);
 
-	void Actor::AddComponent(std::unique_ptr<Component> component) {
-		component->owner = this;
-		m_components.push_back(std::move(component));
-	}
-
-	void Actor::Read(const json::value_t& value) {
-		Object::Read(value);
-
-		JSON_READ(value, tag);
-		JSON_READ(value, lifespan);
-		JSON_READ(value, persistent);
-
-		if (JSON_HAS(value, m_transform)) m_transform.Read(JSON_GET(value, m_transform));
+	if (JSON_HAS(value, transform)) transform.Read(JSON_GET(value, transform)); 
 
 
-		if (JSON_HAS(value, components)) {
-			for (auto& componentValue : JSON_GET(value, components).GetArray()) {
-				std::string type;
-				JSON_READ(componentValue, type);
+	if (JSON_HAS(value, components)) {
+		for (auto& componentValue : JSON_GET(value, components).GetArray()) {
+			std::string type;
+			JSON_READ(componentValue, type);
 
-				auto component = Factory::Instance().Create<Component>(type);
-				component->Read(componentValue);
+			auto component = Factory::Instance().Create<Component>(type);
+			component->Read(componentValue);
 
-				AddComponent(std::move(component));
-			}
+			AddComponent(std::move(component));
 		}
 	}
+}
 
 
 }

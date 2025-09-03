@@ -1,43 +1,51 @@
 #include "Renderer.h"
+#include "Math/Vector2.h"
 #include "Texture.h"
+#include "Core/Logger.h"
+#include <iostream>
 
 namespace viper {
     bool Renderer::Initialize() {
         if (!SDL_Init(SDL_INIT_VIDEO)) {
-            Logger::Error("SDL_Init Error: {}", SDL_GetError());
+            Logger::Error("SLD_Init Error: {}", SDL_GetError());
+            
             return false;
         }
 
         if (!TTF_Init()) {
-            Logger::Error("SDL_Init Error: {}", SDL_GetError());
+            Logger::Error("TTF_Init Error: {}", SDL_GetError());
+            
             return false;
         }
+
 
         return true;
     }
 
-    bool Renderer::CreateWindow(const std::string& name, int width, int height, bool fullscreen)
-    {
-		m_width = width;
-		m_height = height;
+    bool Renderer::CreateWindow(const std::string& name, int width, int height, bool fullscreen) {
+        m_width = width;
+        m_height = height;
 
-
-        m_window = SDL_CreateWindow(name.c_str(), width, height, fullscreen ? SDL_WINDOW_FULLSCREEN : 0);
+        //m_window = SDL_CreateWindow(name.c_str(), width, height, fullscreen ? SDL_WINDOW_FULLSCREEN : 0);
+        m_window = SDL_CreateWindow(name.c_str(), width, height, 0);
         if (m_window == nullptr) {
-            Logger::Error("SDL_Init Error: {}", SDL_GetError());
+            Logger::Error("SDL_CreateWindow Error: {}", SDL_GetError());
+            
             SDL_Quit();
             return false;
         }
 
         m_renderer = SDL_CreateRenderer(m_window, NULL);
         if (m_renderer == nullptr) {
-            Logger::Error("SDL_Init Error: {}", SDL_GetError());
+            Logger::Error("SDL_CreateRenderer Error: {}", SDL_GetError());
+            
             SDL_DestroyWindow(m_window);
             SDL_Quit();
             return false;
         }
-		// Set the logical size of the renderer
-		SDL_SetRenderLogicalPresentation(m_renderer, width, height, SDL_LOGICAL_PRESENTATION_LETTERBOX);
+
+        SDL_SetRenderVSync(m_renderer, 1);
+        SDL_SetRenderLogicalPresentation(m_renderer, width, height, SDL_LOGICAL_PRESENTATION_LETTERBOX);
 
         return true;
     }
@@ -49,7 +57,7 @@ namespace viper {
 
     void Renderer::SetColor(float r, float g, float b, float a)
     {
-		SDL_SetRenderDrawColorFloat(m_renderer, r, g, b, a);
+        SDL_SetRenderDrawColorFloat(m_renderer, r, g, b, a);
     }
 
     void Renderer::Clear()
@@ -62,7 +70,9 @@ namespace viper {
         SDL_RenderPresent(m_renderer);
     }
 
-    void Renderer::Shutdown() {
+    void Renderer::Shutdown()
+    {
+
         TTF_Quit();
         SDL_DestroyRenderer(m_renderer);
         SDL_DestroyWindow(m_window);
@@ -88,6 +98,7 @@ namespace viper {
         destRect.w = size.x;
         destRect.h = size.y;
 
+        
         SDL_RenderTexture(m_renderer, texture.m_texture, NULL, &destRect);
     }
 
@@ -100,9 +111,25 @@ namespace viper {
         destRect.x = x - destRect.w * 0.5f;
         destRect.y = y - destRect.h * 0.5f;
 
+
         SDL_RenderTextureRotated(m_renderer, texture.m_texture, NULL, &destRect, angle, NULL, SDL_FLIP_NONE);
 
     }
 
+    void Renderer::DrawTexture(Texture& texture, const rect& sourceRect, float x, float y, float angle, float scale) {
+        SDL_FRect srcRect;
+        srcRect.x = sourceRect.x;
+        srcRect.y = sourceRect.y;
+        srcRect.w = sourceRect.w;
+        srcRect.h = sourceRect.h;
+
+        SDL_FRect destRect;
+        destRect.x = srcRect.x * scale;
+        destRect.y = srcRect.y * scale;
+        destRect.w = x - srcRect.w * 0.5f;
+        destRect.h = y - srcRect.h * 0.5f;
+
+        SDL_RenderTextureRotated(m_renderer, texture.m_texture, &srcRect, &destRect, angle, NULL, SDL_FLIP_NONE);
+    }
 
 }

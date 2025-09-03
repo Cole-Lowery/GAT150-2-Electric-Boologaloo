@@ -1,11 +1,11 @@
 #pragma once
-
-#include "Object.h"
+#include "Framework/Object.h"
 
 namespace viper {
 	class Component : public Object {
 	public:
 		class Actor* owner{ nullptr };
+
 	public:
 		Component() = default;
 

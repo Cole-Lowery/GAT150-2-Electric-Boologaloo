@@ -1,8 +1,8 @@
 #pragma once
 #include "Resources/Resource.h"
-#include <string>
 
-struct TTF_Font;
+#include <SDL3_ttf/SDL_ttf.h>
+#include <string>
 
 namespace viper {
 	class Font : public Resource {
@@ -11,10 +11,10 @@ namespace viper {
 		~Font();
 
 		bool Load(const std::string& name, float fontSize);
-
 	private:
+
 		friend class Text;
 
 		TTF_Font* m_ttfFont{ nullptr };
-	};
+};
 }
