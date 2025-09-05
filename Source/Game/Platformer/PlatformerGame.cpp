@@ -13,9 +13,9 @@
 		m_scene->Load("scenes/prototypes.json");
 		m_scene->Load("scenes/level.json");
 
-		m_titleText = std::make_unique<viper::Text>(viper::Resources().GetWithID<viper::Font>("title_font", "Archeologicaps.ttf", 128.0f));
-		m_scoreText = std::make_unique<viper::Text>(viper::Resources().GetWithID<viper::Font>("ui_font", "Archeologicaps.ttf", 48.0f));
-		m_livesText = std::make_unique<viper::Text>(viper::Resources().GetWithID<viper::Font>("ui_font", "Archeologicaps.ttf", 48.0f));
+		m_titleText = std::make_unique<viper::Text>(viper::Resources().GetWithID<viper::Font>("title_font", "Prisma.ttf", 128.0f));
+		m_scoreText = std::make_unique<viper::Text>(viper::Resources().GetWithID<viper::Font>("ui_font", "Prisma.ttf", 48.0f));
+		m_livesText = std::make_unique<viper::Text>(viper::Resources().GetWithID<viper::Font>("ui_font", "Prisma.ttf", 48.0f));
 
 		
 
@@ -36,7 +36,7 @@
 			break;
 		case PlatformerGame::GameState::StartRound:
 			SpawnPlayer();
-			//SpawnEnemy();
+			SpawnEnemy();
 			SpawnBat();
 			m_gameState = GameState::Game;
 
@@ -79,8 +79,8 @@
 	}
 
 	void PlatformerGame::SpawnEnemy() {
-		//auto enemy = viper::Instantiate("platformenemy");
-		//m_scene->AddActor(std::move(enemy));
+		auto enemy = viper::Instantiate("platformenemy");
+		m_scene->AddActor(std::move(enemy));
 	}
 
 	void PlatformerGame::SpawnPlayer() {
@@ -92,4 +92,10 @@
 	void PlatformerGame::SpawnBat() {
 		auto enemy = viper::Instantiate("bat");
 		m_scene->AddActor(std::move(enemy));
+	}
+
+	void PlatformerGame::SpawnCoin() {
+		auto pickup = viper::Instantiate("coin_pickup");
+		pickup->transform.position = viper::vec2{ viper::random::getReal(0.0f, 1080.0f), viper::random::getReal(0.0f, 1080.0f) };
+		m_scene->AddActor(std::move(pickup));
 	}

@@ -122,6 +122,12 @@
     <ClCompile Include="Components\Animator.cpp">
       <Filter>Source</Filter>
     </ClCompile>
+    <ClCompile Include="Components\TilemapRenderer.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="Renderer\Tilemap.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Core\Random.h">
@@ -266,6 +272,12 @@
       <Filter>Include</Filter>
     </ClInclude>
     <ClInclude Include="Components\Animator.h">
+      <Filter>Include</Filter>
+    </ClInclude>
+    <ClInclude Include="Components\TilemapRenderer.h">
+      <Filter>Include</Filter>
+    </ClInclude>
+    <ClInclude Include="Renderer\Tilemap.h">
       <Filter>Include</Filter>
     </ClInclude>
   </ItemGroup>

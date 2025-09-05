@@ -23,6 +23,8 @@ namespace viper{
 		static float ms_pixelsPerUnit;
 
 	private:
+		void ProcessCollisionEvents();
+
 		friend class PhysicsBody;
 
 		b2WorldId m_worldId;

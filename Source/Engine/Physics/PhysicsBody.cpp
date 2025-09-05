@@ -25,6 +25,9 @@ namespace viper {
 		shapeDef.density = def.density;
 		shapeDef.isSensor = def.isSensor;
 
+		if (def.isSensor) shapeDef.enableSensorEvents = true;
+		else shapeDef.enableContactEvents = true;
+
 		// create shape
 		b2Vec2 hsize = to_b2(Physics::PixelToWorld(size * transform.scale * 0.5f));
 		switch (def.shape)
@@ -76,5 +79,9 @@ namespace viper {
 
 	void PhysicsBody::SetVelocity(const vec2& velocity) {
 		b2Body_SetLinearVelocity(m_bodyId, to_b2(Physics::PixelToWorld(velocity)));
+	}
+	vec2 PhysicsBody::GetVelocity() {
+
+		return Physics::WorldToPixel(to_vec2(b2Body_GetLinearVelocity(m_bodyId)));
 	}
 }

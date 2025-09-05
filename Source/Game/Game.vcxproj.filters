@@ -8,6 +8,9 @@
     <Filter Include="Source\Game">
       <UniqueIdentifier>{e859fd74-b1d4-43c5-9d65-fd56e2076ae7}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Assests">
+      <UniqueIdentifier>{e7b4b8b2-7b51-4c2e-b39c-c783523fdda2}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Main.cpp">
@@ -46,6 +49,12 @@
     <ClCompile Include="Platformer\EnemyController.cpp">
       <Filter>Source</Filter>
     </ClCompile>
+    <ClCompile Include="Platformer\FlyingEnemyController.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="Platformer\Pickup.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Space\Player.h">
@@ -69,12 +78,21 @@
     <ClInclude Include="Platformer\PlatformerGame.h" />
     <ClInclude Include="Platformer\PlayerController.h" />
     <ClInclude Include="Platformer\EnemyController.h" />
+    <ClInclude Include="Platformer\FlyingEnemyController.h" />
+    <ClInclude Include="Platformer\Pickup.h" />
   </ItemGroup>
   <ItemGroup>
     <Text Include="..\..\Build\Assets\Meshes\enemy.txt" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="..\..\Build\Assets\Platformer\Scenes\prototypes.json" />
-    <None Include="..\..\Build\Assets\Platformer\Scenes\level.json" />
+    <None Include="..\..\Build\Assets\Platformer\Tilemaps\tilemap.json">
+      <Filter>Assests</Filter>
+    </None>
+    <None Include="..\..\Build\Assets\Platformer\Scenes\prototypes.json">
+      <Filter>Assests</Filter>
+    </None>
+    <None Include="..\..\Build\Assets\Platformer\Scenes\level.json">
+      <Filter>Assests</Filter>
+    </None>
   </ItemGroup>
 </Project>

@@ -1,0 +1,55 @@
+{
+    "Map/SizeTest": {
+        "height": 4300,
+        "width": 2
+    },
+    "activeFile": "tilemap.tmx",
+    "expandedProjectPaths": [
+        "."
+    ],
+    "fileStates": {
+        "tilemap.json": {
+            "scale": 1,
+            "selectedLayer": 0,
+            "viewCenter": {
+                "x": 367.5,
+                "y": 118
+            }
+        },
+        "tilemap.tmx": {
+            "scale": 1.223125,
+            "selectedLayer": 0,
+            "viewCenter": {
+                "x": 239.95912110373015,
+                "y": 159.8364844149208
+            }
+        },
+        "tilemap.tsx": {
+            "scaleInDock": 1,
+            "scaleInEditor": 1
+        }
+    },
+    "last.exportedFilePath": "C:/Classes/C++ 2 Electric Boologaloo/GAT150 2 Electric Boologaloo/GAT150-2-Electric-Boologaloo/Build/Assets/Platformer/Tilemaps",
+    "last.externalTilesetPath": "C:/Classes/C++ 2 Electric Boologaloo/GAT150 2 Electric Boologaloo/GAT150-2-Electric-Boologaloo/Build/Assets/Platformer/Tilemaps",
+    "last.imagePath": "C:/Classes/C++ 2 Electric Boologaloo/GAT150 2 Electric Boologaloo/GAT150-2-Electric-Boologaloo/Build/Assets/Platformer/Textures",
+    "map.lastUsedExportFilter": "JSON map files (*.tmj *.json)",
+    "map.lastUsedFormat": "tmx",
+    "map.tileHeight": 16,
+    "map.tileWidth": 16,
+    "openFiles": [
+        "tilemap.tsx",
+        "tilemap.tmx"
+    ],
+    "project": "untitled.tiled-project",
+    "recentFiles": [
+        "tilemap.tsx",
+        "tilemap.tmx",
+        "tilemap.json"
+    ],
+    "tileset.lastUsedFilter": "Tiled tileset files (*.tsx *.xml)",
+    "tileset.lastUsedFormat": "tsx",
+    "tileset.tileSize": {
+        "height": 16,
+        "width": 16
+    }
+}

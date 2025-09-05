@@ -194,6 +194,8 @@
       <PrecompiledHeaderFile Condition="'$(Configuration)|$(Platform)'=='Release|x64'">GamePCH.h</PrecompiledHeaderFile>
     </ClCompile>
     <ClCompile Include="Platformer\EnemyController.cpp" />
+    <ClCompile Include="Platformer\FlyingEnemyController.cpp" />
+    <ClCompile Include="Platformer\Pickup.cpp" />
     <ClCompile Include="Platformer\PlatformerGame.cpp" />
     <ClCompile Include="Platformer\PlayerController.cpp" />
     <ClCompile Include="Space\Enemy.cpp" />
@@ -213,6 +215,8 @@
   <ItemGroup>
     <ClInclude Include="GamePCH.h" />
     <ClInclude Include="Platformer\EnemyController.h" />
+    <ClInclude Include="Platformer\FlyingEnemyController.h" />
+    <ClInclude Include="Platformer\Pickup.h" />
     <ClInclude Include="Platformer\PlatformerGame.h" />
     <ClInclude Include="Platformer\PlayerController.h" />
     <ClInclude Include="Space\Enemy.h" />
@@ -229,6 +233,7 @@
   <ItemGroup>
     <None Include="..\..\Build\Assets\Platformer\Scenes\level.json" />
     <None Include="..\..\Build\Assets\Platformer\Scenes\prototypes.json" />
+    <None Include="..\..\Build\Assets\Platformer\Tilemaps\tilemap.json" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

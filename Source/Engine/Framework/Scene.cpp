@@ -11,41 +11,9 @@ namespace viper {
 			actor->Update(dt);
 		}
 
-		//remove destroyed actors
 		std::erase_if(m_actors, [](auto& actor) {
 			return (actor->destroyed);
 		});
-		//for (auto iter = m_actors.begin(); iter != m_actors.end();) {
-		//	if ((*iter)->destroyed) {
-		//		iter = m_actors.erase(iter);
-		//	}
-		//	else {
-		//		iter++;
-		//	}
-		//}
-
-
-	//check for collisions
-	for (auto& actorA : m_actors) {
-		for (auto& actorB : m_actors) {
-			continue;
-
-			if (actorA == actorB || (actorA->destroyed || actorB->destroyed)) continue;
-
-			auto colliderA = actorA->GetComponent<viper::ColliderComponent>();
-			auto colliderB = actorB->GetComponent<viper::ColliderComponent>();
-
-			//make sure both actors have a collider
-			if (!colliderA || !colliderB) continue;
-
-			if (colliderA->CheckCollision(*colliderB)) {
-				actorA->OnCollision(actorB.get());
-				actorB->OnCollision(actorA.get());
-			}
-		}
-	}
-
-
 	}
 
 

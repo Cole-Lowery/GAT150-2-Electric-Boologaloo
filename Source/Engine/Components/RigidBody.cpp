@@ -30,6 +30,7 @@ namespace viper {
 	void RigidBody::Update(float dt) {
 		owner->transform.position = m_physicsBody->GetPosition();
 		owner->transform.rotation = math::radToDeg(m_physicsBody->GetAngle());
+		velocity = m_physicsBody->GetVelocity();
 
 		//owner->transform.position += velocity * dt;
 		//velocity *= (1.0f / (1.0f + damping * dt)); // ( < 1) = slow down, 1/1.1 = < 1

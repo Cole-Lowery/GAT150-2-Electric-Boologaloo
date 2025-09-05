@@ -19,15 +19,15 @@ bool SpaceGame::Initialize() {
 	
     /*
     m_titleFont = std::make_shared<viper::Font>();
-    m_titleFont->Load("Archeologicaps.ttf", 128);
+    m_titleFont->Load("Prisma.ttf", 128);
 
     m_uiFont = std::make_shared<viper::Font>();
-    m_uiFont->Load("Archeologicaps.ttf", 48);
+    m_uiFont->Load("Prisma.ttf", 48);
     */
     //it only loads the first font size
-    m_titleText = std::make_unique<viper::Text>(viper::Resources().GetWithID<viper::Font>("title_font", "Archeologicaps.ttf", 128.0f));
-    m_scoreText = std::make_unique<viper::Text>(viper::Resources().GetWithID<viper::Font>("ui_font", "Archeologicaps.ttf", 48.0f));
-    m_livesText = std::make_unique<viper::Text>(viper::Resources().GetWithID<viper::Font>("ui_font", "Archeologicaps.ttf", 48.0f));
+    m_titleText = std::make_unique<viper::Text>(viper::Resources().GetWithID<viper::Font>("title_font", "Prisma.ttf", 128.0f));
+    m_scoreText = std::make_unique<viper::Text>(viper::Resources().GetWithID<viper::Font>("ui_font", "Prisma.ttf", 48.0f));
+    m_livesText = std::make_unique<viper::Text>(viper::Resources().GetWithID<viper::Font>("ui_font", "Prisma.ttf", 48.0f));
 
     
 	

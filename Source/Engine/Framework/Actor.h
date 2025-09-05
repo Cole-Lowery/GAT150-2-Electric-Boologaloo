@@ -15,50 +15,29 @@ namespace viper{
 	class Actor : public Object {
 	public:
 		std::string tag;
-
 		bool destroyed{ false };
 		float lifespan{ 0 };
-
 		bool persistent{ false };
-
 		Transform transform;
 		class Scene* scene{ nullptr };
 	public:
 		Actor() = default;
-		Actor( const Transform& transform) :
-			transform{ transform }
-			 {}
-
+		Actor( const Transform& transform) : transform{ transform }{}
 		Actor(const Actor& other);
-
 		CLASS_PROTOTYPE(Actor)
-
 		virtual void Start();
 		virtual void Destroyed();
-
 		virtual void Update(float dt);
 		virtual void Draw(class Renderer& renderer);
-
 		virtual void OnCollision(Actor* other);
-
-
-		//components
 		void AddComponent(std::unique_ptr<Component> component);
-
 		template<typename T>
 		T* GetComponent();
-
 		template<typename T>
 		std::vector<T*> GetComponents();
-
 		void Read(const json::value_t& value);
 	protected:
 		std::vector<std::unique_ptr<Component>> m_components;
-		
-		
-
-		// Inherited via Serializeable
-
 	};
 
 	template<typename T>

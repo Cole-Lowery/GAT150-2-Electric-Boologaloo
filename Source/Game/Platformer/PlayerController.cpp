@@ -24,11 +24,16 @@ void PlayerController::Update(float dt) {
 	if (viper::GetEngine().GetInput().GetKeyPressed(SDL_SCANCODE_SPACE)) {
 		m_rigidBody->ApplyForce(viper::vec2{ 0, -1 } * 100000);
 	}
+
+	auto spriteRenderer = owner->GetComponent<viper::SpriteRenderer>();
+	if (spriteRenderer) {
+		if (viper::math::fabs(m_rigidBody->velocity.x != 0) > 0.1f) {
+		spriteRenderer->flipH = (m_rigidBody->velocity.x < 0);
+
+		}
+	}
 }
-
-
 void PlayerController::OnCollision(viper::Actor* other) {
-
 }
 
 void PlayerController::Read(const viper::json::value_t& value) {

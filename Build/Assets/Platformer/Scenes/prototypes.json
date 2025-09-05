@@ -63,7 +63,7 @@
           "gravityScale": 1.0,
           "constrainAngle": true,
           "shape": "capsule",
-          "scale": [ 1, 1 ]
+          "scale": [ 0.5, 0.5 ]
         },
         {
           "type": "CircleCollider2D",
@@ -80,9 +80,14 @@
           500
         ],
         "rotation": 0,
-        "scale": 3
+        "scale": 1
       },
       "components": [
+        {
+          "type": "FlyingEnemyController",
+          "speed": 100,
+          "maxSpeed": 100
+        },
         {
           "type": "SpriteRenderer"
         },
@@ -94,6 +99,55 @@
               "texture_animation": "animations/bat_idle.json"
             }
           ]
+        },
+        {
+          "type": "RigidBody",
+          "gravityScale": 0.0,
+          "constrainAngle": true,
+          "isSensor": true,
+          "shape": "circle",
+          "scale": [ 1, 1 ],
+          "size": [ 40, 40 ]
+        }
+      ]
+    },
+    {
+      "name": "coin_pickup",
+      "tag": "pickup",
+      "transform": {
+        "position": [
+          740,
+          500
+        ],
+        "rotation": 0,
+        "scale": 1
+      },
+      "components": [
+        {
+          "type": "Pickup",
+          "speed": 100,
+          "maxSpeed": 100
+        },
+        {
+          "type": "SpriteRenderer"
+        },
+        {
+          "type": "Animator",
+          "animations": [
+            {
+              "name": "idle",
+              "texture_animation": "animations/coin_idle.json"
+            }
+          ]
+        },
+        {
+          "type": "RigidBody",
+          "gravityScale": 1.0,
+          "constrainAngle": true,
+          "isSensor": false,
+          "shape": "circle",
+          "scale": [ 1, 1 ],
+          "size": [ 40, 40 ]
         }
       ]
     }
