@@ -23,6 +23,7 @@ void EventManager::RemoveObserver(IObserver& observer) {
 void EventManager::Notify(const Event& event) {
 	//find observers of event
 	auto it = m_observers.find(toLower(event.id));
+
 	if(it != m_observers.end()) {
 		//get observers of event
 		auto& observers = it->second;

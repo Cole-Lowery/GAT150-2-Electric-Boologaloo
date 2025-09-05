@@ -21,14 +21,19 @@ void EnemyController::Update(float dt) {
 		m_rigidBody->ApplyForce(viper::vec2{ 1, 0 } *dir * 1000);
 	}
 
-	if (viper::GetEngine().GetInput().GetKeyPressed(SDL_SCANCODE_SPACE)) {
-		m_rigidBody->ApplyForce(viper::vec2{ 0, -1 } *100000);
-	}
+		m_rigidBody->ApplyForce(viper::vec2{ 0, -1 } * 100000);
+	
 }
 
 
 void EnemyController::OnCollision(viper::Actor* other) {
+	//auto pickup = viper::Instantiate("coin_pickup");
+	//pickup->transform.position = viper::vec2{ viper::random::getReal(0.0f, 1080.0f), viper::random::getReal(0.0f, 1080.0f) };
+	//m_scene->AddActor(std::move(pickup));
 
+	//if (owner->tag != other->tag) {
+	//	owner->destroyed = true;
+	//}
 }
 
 void EnemyController::Read(const viper::json::value_t& value) {

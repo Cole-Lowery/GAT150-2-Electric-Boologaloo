@@ -1,6 +1,6 @@
 {
-  "texture_name": "textures/bat.png",
-  "columns": 4,
+  "texture_name": "textures/coin.png",
+  "columns": 8,
   "rows": 1,
   "start_frame": 0,
   "total_frames": 8,

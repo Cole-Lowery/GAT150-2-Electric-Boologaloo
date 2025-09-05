@@ -6,6 +6,8 @@
 
 class PlatformerGame : public viper::Game, public viper::IObserver {
 public:
+	
+
 	enum class GameState {
 		Initialize,
 		Title,
@@ -27,17 +29,22 @@ public:
 
 	void OnNotify(const viper::Event& event) override;
 	void OnPlayerDeath();
+	void SpawnCoin();
+
+	
 
 private:
 	void SpawnEnemy();
 	void SpawnPlayer();
 	void SpawnBat();
-	void SpawnCoin();
+	void SpawnPowerup();
 
 private:
 	GameState m_gameState = GameState::Initialize;
 	float m_enemySpawnTimer{ 0 };
 	float m_stateTimer{ 0 };
+	float m_coinSpawnTimer{ 0 };
+	float fent_count{ 0 };
 
 	std::shared_ptr< class viper::Font> m_titleFont;
 	std::shared_ptr< class viper::Font> m_uiFont;

@@ -14,9 +14,10 @@ void Pickup::Update(float dt) {
 
 
 void Pickup::OnCollision(viper::Actor* other) {
-	/*if (viper::equalsIgnoreCase(other->tag == "player")) {
-
-	}*/
+	if (viper::equalsIgnoreCase(other->tag, "player")) {
+		owner->destroyed = true;
+		EVENT_NOTIFY_DATA(add_points, 100);
+	}
 }
 
 void Pickup::Read(const viper::json::value_t& value) {

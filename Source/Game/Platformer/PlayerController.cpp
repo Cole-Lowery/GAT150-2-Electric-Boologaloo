@@ -5,6 +5,7 @@ FACTORY_REGISTER(PlayerController)
 
 void PlayerController::Start() {
 	m_rigidBody = owner->GetComponent<viper::RigidBody>();
+	fireTimer = fireTime;
 }
 
 void PlayerController::Update(float dt) {
@@ -25,6 +26,9 @@ void PlayerController::Update(float dt) {
 		m_rigidBody->ApplyForce(viper::vec2{ 0, -1 } * 100000);
 	}
 
+	
+
+
 	auto spriteRenderer = owner->GetComponent<viper::SpriteRenderer>();
 	if (spriteRenderer) {
 		if (viper::math::fabs(m_rigidBody->velocity.x != 0) > 0.1f) {
@@ -33,7 +37,18 @@ void PlayerController::Update(float dt) {
 		}
 	}
 }
+
+
 void PlayerController::OnCollision(viper::Actor* other) {
+ 	if (other->tag == "enemy") {
+		owner->destroyed = true;
+		EVENT_NOTIFY_DATA(player_dead, true);
+	}
+	else if (other->tag == "powerup") {
+		maxSpeed + 20;
+		speed + 20;
+		EVENT_NOTIFY_DATA(fent, true);
+	}
 }
 
 void PlayerController::Read(const viper::json::value_t& value) {

@@ -1,4 +1,5 @@
 #include "FlyingEnemyController.h"
+#include "PlatformerGame.h"
 #include "../GamePCH.h"
 
 FACTORY_REGISTER(FlyingEnemyController)
@@ -25,14 +26,14 @@ void FlyingEnemyController::Update(float dt) {
 	}
 	*/
 
-	if (viper::GetEngine().GetInput().GetKeyPressed(SDL_SCANCODE_SPACE)) {
-		m_rigidBody->ApplyForce(viper::vec2{ 0, -1 } *100000);
-	}
+		m_rigidBody->ApplyForce(viper::vec2{ 0, -1 } * 10);
+	
 }
 
 
 void FlyingEnemyController::OnCollision(viper::Actor* other) {
-
+	//EVENT_NOTIFY_DATA(touch_enemy, 1);
+	//std::cout << "Touching the player" << std::endl;
 }
 
 void FlyingEnemyController::Read(const viper::json::value_t& value) {
